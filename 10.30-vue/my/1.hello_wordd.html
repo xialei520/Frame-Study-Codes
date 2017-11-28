@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id = "box">{{skill}}</div>
+		
+		<div id="demo2">
+			<p>{{html}}</p>
+			<p>{{arr[2]}}</p>
+			<span>{{num * 5}}</span>
+			<span>{{num > 100? false:true}}</span>
+			<div>{{obj.sex}}{{obj.age}}</div>
+		</div>
+		<script type="text/javascript" src = "../js/vue.js"></script>
+		<script>
+			var demo  = new Vue({
+				el:"#box",
+				data:{
+					name:"xialei",
+					skill:"reading"
+				},
+				arr:[1, 2, 3]
+				
+			});
+			var demo2  = new Vue({
+				el:"#demo2",
+				data:{
+					html:"hello world",
+					name:"xialei",
+					skill:"reading",
+					arr:[1, 2, 3],
+					num:100,
+					obj:{
+						name:"xiaoming",
+						sex:"男",
+						age:"18"
+					}
+				}
+				
+			});
+		</script>
+	</body>
+</html>
