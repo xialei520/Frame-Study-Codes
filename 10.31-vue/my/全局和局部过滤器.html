@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<span>{{name|aaa|cc|dd}}</span>
+		</div>
+		<div id = "demo">
+			<span>{{age|aaa|cc|dd}}</span>
+		</div>
+		<script src = "../js/vue.js"></script>
+		<script>
+			//全局过滤，可以给任意元素节点添加过滤
+			Vue.filter("aaa", function(value){
+				console.log(value);
+				
+				return value+ "!";//加过滤器后，必须要有返回值
+			})
+			new Vue({
+				el:"#box",
+				data:{
+					name:"xiaoming",
+					age:18
+				},
+				filters:{//局部过滤器只能给该元素节点添加过滤
+					cc:function(value){
+						console.log(value);
+						return value + "?";
+					},
+					dd:function(value){
+						console.log(value);
+						return value+'ed';
+					}
+				}
+			})
+			new Vue({
+				el:"#demo",
+				data:{
+					age:19
+				}
+			})
+		</script>
+	</body>
+</html>

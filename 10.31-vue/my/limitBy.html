@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<p>{{text|limitBy 3 5}}</p>
+			<!--从下标为5开始提取，提取的长度为3；第一个参数表示提取的长度，第二个参数表示开始提取的下标-->
+			<button @click="pre">上一页</button>
+			<button @click="next">下一页</button>
+			<ul>
+				<li v-for="a in arr|limitBy 2 page">id:{{a.id}}, name:{{a.name}}</li>
+			</ul>
+			
+		</div>
+		<script src = "../js/vue1.js"></script>
+		<script>
+			new Vue({
+				el:"#box",
+				data:{
+					page:0,
+					text:"abcdefjhijk",
+					arr:[{
+						id:1,
+						name:"青岛"
+					}, {
+						id:2,
+						name:"广州"
+					}, {
+						id:3,
+						name:'武汉'
+					},{
+						id:4,
+						name:"烟台"
+					}]
+				},
+				methods:{
+					pre:function(){
+						this.page = this.page - 2;
+					},
+					next:function(){
+						this.page = this.page + 2;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

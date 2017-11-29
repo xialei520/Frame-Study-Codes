@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id = "box">
+			<p>{{num|glq}}</p>
+			<p>{{word|ss}}</p>
+		</div>
+		<script src = "../js/vue1.js"></script>
+		<script>
+			Vue.filter("glq", function(value){
+				//全局过滤
+				console.log(value);
+				var newArr = "$"+ value;
+				return newArr;
+			})
+			Vue.filter("ss", function(value){
+				console.log(value);
+				var arr = value +"ing";
+				return arr;
+			})
+			new Vue({
+				el:"#box",
+				data:{
+					name:"wanggang",
+					num:"1000",
+					word:"see"
+				}
+			})
+		</script>
+		
+	</body>
+</html>

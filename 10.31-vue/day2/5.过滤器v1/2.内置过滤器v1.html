@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo">
+			<p style="color: red;">1.currency</p>
+			<p>{{num|currency}}</p>
+			<p style="color: red;">2.debounce</p>
+			<!--延时过滤器-->
+			<button @click="test|debounce 3000">OK</button>
+			<p style="color: red;">3.uppercase</p>
+			<p>{{content|uppercase}}</p>
+			<p style="color: red;">4.lowercase</p>
+			<p>{{content|lowercase}}</p>
+			<p style="color: red;">5.capitalize</p>
+			<p>{{content|capitalize}}</p>
+			<p style="color: red;">6.json</p>
+			<p>{{obj|json}}</p>
+			
+			<p style="color: red;">7.orderBy</p>
+			<select v-model="select1">
+				<option value="id">id</option>
+				<option value="name">名字</option>
+			</select>
+			<button @click="sordFn">排序</button>
+			<ul>
+				<li v-for="a in arr|orderBy select1 sort">id:{{a.id}} name:{{a.name}}</li>
+			</ul>
+			<ul>
+				<li v-for="b in brr">{{b}}</li>
+			</ul>
+		</div>
+		<script src="../../js/vue1.js"></script>
+		<script>
+			new Vue({
+				el:"#demo",
+				data:{
+					num:100,
+					content:"aBcDefGI",
+					obj:{
+						name:"qingdao",
+						skill:["ps","js","css"]
+					},
+					arr:[{
+						name:"广州",
+						id:5
+					},{
+						name:"青岛",
+						id:4
+					},{
+						name:"深圳",
+						id:7
+					},{
+						name:"北京",
+						id:1
+					}],
+					select1:"name",
+					sort:1,
+					brr:"123456789"
+				},
+				methods:{
+					test:function(){
+						alert(1)
+					},
+					sordFn:function(){
+						this.sort = -this.sort
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

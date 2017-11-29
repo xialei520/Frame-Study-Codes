@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<input type="text" v-model="search" />
+			<div v-html="computedhtml"></div>
+		</div>
+		<script src = "../js/vue.js"></script>
+		<script>
+			
+			new Vue({
+				el:"#box",
+				data:{
+					name:"qingdao",
+					search:"",
+					html:"||abckeffflpos||"
+				},
+				computed:{
+					computedhtml:function(){
+						this.search
+						this.html
+						var arr = this.html.split(this.search)
+						console.log(arr)
+						var str = arr.join("<span style='color:red'>"+this.search +"</span>")
+						return str
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

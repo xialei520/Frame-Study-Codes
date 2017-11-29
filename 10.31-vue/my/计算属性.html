@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<div>{{search}}</div>
+			<div>{{searched|aaa}}</div>
+			<div>{{num}}</div>
+			<div>{{numed}}</div>
+		</div>
+		<script src ="../js/vue.js"></script>
+		<script>
+			Vue.filter("aaa", function(value){
+				alert(value);
+			})
+			new Vue({
+				el:"#box",
+				data:{
+					search:"abc",
+					num:1000
+				},
+				computed:{
+					searched:function(){
+						return "cba"+ this.search;
+					},
+					numed:function(){
+						return "$" + this.num;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
