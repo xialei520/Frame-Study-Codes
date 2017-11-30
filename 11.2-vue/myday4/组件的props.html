@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id = "box"></div>
+		<script src = "../js/vue.js"></script>
+		<script type="text/javascript">
+			
+			//全局定义组件
+			Vue.component("xHeader", {
+				 
+				template:`
+					<div style = "border:1px solid red"> 
+						
+						<p>{{this.name}}</p>
+						
+					</div>
+				`
+				
+			})
+			new Vue({
+				el:"#box",
+				
+				template:`
+					<div>
+						<xHeader  ></xHeader>
+						<xContent  :getname="name"></xContent>
+					</div>
+					
+				`,
+				 data:{
+					name:"xialei"
+				},
+				//局部组件
+				components:{
+					//	组件名
+					xContent:{
+						props:["getname"],
+						template: `
+							 <div>
+							 	<p>内容区域组件</p>
+								<p>父组件的name值为:{{getname}}</p>
+							 </div>
+							
+						`,
+						mounted:function(){
+							console.log(this);
+							console.log(this.$parent.name);
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
