@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<!--<ul>
+				<li v-for="a in arr">{{a}}</li>
+			</ul>
+			<button @click="loadMore">加载更多</button>-->
+			<ul>
+				<li v-for="a in arr">{{a}}</li>
+			</ul>
+			<button @click="loadMore">加载更多</button>
+		</div>
+		<script src= "../js/vue.js"></script>
+		<script src = "../js/jquery.js"></script>
+		<script>
+			new Vue({
+				el:"#box",
+				data:{
+					name:"qd",
+					arr:['a', 'b', 'c', 'd', 'e', 'f', 'g']
+					
+				},
+				methods:{
+					loadMore:function(){
+						var self = this;
+						$.ajax({
+							url:"http://localhost/AJAX/vue/data.php",
+							type:"get",
+							async:true,
+							success: function(data){
+								console.log(data);
+//								var data = JSON.parse(data);
+//								self.arr = self.arr.concat(data.arr);
+							}
+						})
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

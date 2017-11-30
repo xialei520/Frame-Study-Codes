@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			 .red{
+			 	color:red;
+			 }
+			 .size{
+			 	font-size: 50px;;
+			 }
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<!--<p :id = "name">{{name}}</p>-->
+			<p v-bind:id="name">{{name}}</p>
+			<p v-bind:style="{color:'red', fontSize:'32px'}">红色</p>
+			<p :style="{color:'red', fontSize:'32px'}">红色</p>
+			<p :style="{display:bool?'block':'none'}">显示和隐藏</p>
+			<p :class="{'red':!bool, 'size':num< 67}">类</p>
+			<!--通过给class的属性值添加判断条件，来确定是否存在给属性值-->
+			<p v-show="bool">显示与隐藏</p>
+			<button v-on:click="bool = !bool">OK</button>
+			<!--通过点击事件来改变bool的状态值，-->
+		</div>
+		
+		
+		<script src="../js/vue.js"></script>
+		<script>
+		
+			 new Vue({
+			 	el:"#box",
+			 	data:{
+			 		name:"xiaolong",
+			 		num:66,
+			 		bool:true
+			 	}
+			 })
+		</script>
+	</body>
+</html>

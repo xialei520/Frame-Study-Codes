@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script src = "../js/vue.js"></script>
+		<script src = "firstcp.js"> </script>
+		<script>
+			Vue.component("secondCp", {
+				template:`
+					<div style = "border:1px solid red">
+						<p>这是第二个组件</p>
+					</div>
+				`
+			})
+			
+			//new Vue是最外层组件
+			new Vue({
+				el:"#box",
+				data:{
+					name:"qd"
+				},
+				template: `
+					<div>
+						<p>{{name}}</p>
+						<firstCp></firstCp>
+						<firstCp></firstCp>
+						<secondCp></secondCp>
+					</div>
+				`
+			})
+		</script>
+	</body>
+</html>

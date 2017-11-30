@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id = "box">
+			<input type="type"  v-model="name"/><!--显示为默认值，相当于placeholder-->
+			<input type="range" v-model="num" />
+			<p :style="{fontSize:num+'px'}">中国</p>
+			
+			<textarea v-model="content"></textarea>
+			<p>{{content}}</p>
+			
+			<select v-model="sel"><!--默认值为绿色-->
+				<option value="red">红色</option>
+				<option value="green">绿色</option>
+				<option value="blue">蓝色</option>
+			</select>
+			<p :style="{'color':sel}">{{sel}}</p>
+		</div>
+		<script src = "../js/vue.js"></script>
+		<script type="text/javascript">
+			new Vue({
+				el:"#box",
+				data:{
+					name:"xiaoming",
+					content:"",
+					sel:"green",//默认值
+					num: 68
+				}
+			})
+		</script>
+	</body>
+</html>

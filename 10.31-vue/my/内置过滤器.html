@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<span>{{num|currency}}</span>
+			<button v-on:click="test|debounce 3000">延迟过滤器</button>
+			<p>{{content|uppercase}}</p>
+			<p>{{content|lowercase}}</p>
+			<p>{{content|capitalize}}</p>
+			<p>{{obj|json}}</p>
+			
+			<select v-model="select1">
+				<option value="name">姓名</option>
+				<option value="id">id</option>
+			</select>
+			<button v-on:click="sordFn">排序</button>
+			<ul>
+				<li v-for="a in arr|orderBy select1 sort">id:{{a.id}},name:{{a.name}}</li>
+				<!--以select1的值为排序标准，进行升序或降序，sort表示1或-1，sort的值由点击事件来控制。-->
+			</ul>
+			
+			<ul>
+				<li v-for="a in brr">{{a}}</li>
+			</ul>
+		</div>
+		<!--vue2版本中没有currency，debounce,uppercase,lowercase这个过滤器，-->
+		<!--只存在vue1版本内置过滤器
+		currency：钱币符号$100.00 
+		debounce：事件延迟
+		uppercase：字符串转大写
+		lowercase：字符串转小写
+		capitalize：字符串首字母大写
+		json:将对象以字符串的形式输出-->
+		
+		<script src = "../js/vue1.js"></script>
+		<script>
+			new Vue({
+				el:'#box',
+				data:{
+					
+					age:18,
+					num:100,
+					content:"abcDEFG",
+					obj:{
+						name:"xiaohong",
+						skill:["ps", "js", "html"]
+					},
+					select1:"name",
+					sort:1,
+					brr:"1234567890",
+					arr:[{
+						name:"青岛",
+						id:1
+					},{
+						name:"内蒙",
+						id:3
+					},{
+						name:"西安",
+						id:2
+					},{
+						name:"杭州",
+						id:8
+					}]
+				},
+				
+				methods:{
+					test:function(){
+						alert(1);
+					},
+					sordFn:function(){
+						console.log(this);
+						this.sort = -this.sort;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

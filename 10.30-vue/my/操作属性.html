@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="one" :name="color">
+		<p :name = "color">{{color}}</p>
+		<p :style = "{color:'red'}">fff</p>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script type="text/javascript">
+			var demo = new Vue({
+				el:"#one",
+				data:{
+					name:"xioameing"
+					color:"blue"
+				}
+			})
+		</script>
+	</body>
+</html>

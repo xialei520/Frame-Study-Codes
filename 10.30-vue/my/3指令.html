@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id= "box">
+			<p v-text = "name"></p><!--显示标签间的内容-->
+			<p v-if="bool" v-text= "name1"></p>
+				
+			<!--判断v-if后面的值是true或false，为true则显示，false则隐藏-->
+			<p v-else v-text="name2"></p><!--作为v-if的一种补充-->
+			<ul>
+				<li v-for="a in arr">{{a}}</li>
+			</ul>
+			<select name="">
+				<option v-for="a in arr">{{a}}</option>
+			</select>
+			 <table>
+			 	<tr>
+			 		<td v-for="a in arr">{{a}}</td>
+			 	</tr>
+			 </table>
+			 <ul>
+			 	<li v-for="a in arr2">{{a.name}}{{a.age}}</li>
+			 </ul>
+			 <table>
+			 	
+			 	<tr v-for="a in arr2">
+			 		<td>{{a.name}}</td>
+			 		<td>{{a.age}}</td>
+			 	</tr>
+			 </table>
+			<div v-show="!bool">sssssssssssssssssss</div><!--隐藏之后结构还存在，只是display为none；-->
+			<div v-if="!bool">dddddddddddddddddddd</div><!--隐藏之后结构移除-->
+		</div>
+			<button v-on:click="bool=!bool">隐藏</button>
+		<script src = "../js/vue.js"></script>
+		<script type="text/javascript">
+			new Vue({
+				el:"#box",
+				data:{
+					name1:'dingdao111111111111111',
+					name2:"beijing11111111111111",
+					bool:true,
+					obj:{
+						
+					},
+					bool:true,
+					arr:["青岛", "上海", "南京"],
+					arr2:[{
+						name:"xiaoming",
+						age:"18"
+					}, {
+						name:"xiaogang",
+						age:"16"
+					}, {
+						name:"xiaohong",
+						age:"10"
+					}]
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<script src="../../js/vue.js"></script>
+		<script>
+			//事件总线
+			var bus = new Vue();
+			Vue.component("xchild",{
+				template:`
+					<div style="border:1px solid red;margin: 20px">
+						<input v-model="name" />
+						<p>{{name}}</p>
+					</div>
+				`,
+				data:function(){
+					return {
+						name:"gz"
+					}
+				},
+				watch:{
+					name:function(){
+						//console.log(this.name)
+						//发送数据
+						bus.$emit('to-father', this.name)
+					}
+				},
+				mounted:function(){
+					var self = this
+					bus.$on('to-child', function (data) {
+						console.log("儿子接受老爸的值:",data)
+						self.name = data
+					})
+				}
+			})
+			new Vue({
+				el:"#demo",
+				template:`
+					<div style="border:1px solid green">
+						<input v-model="name" />
+						<p>{{name}}</p>
+						<xchild></xchild>
+					</div>
+				`,
+				data:{
+					name:"qd"
+				},
+				mounted:function(){
+					var self = this
+					bus.$on('to-father', function (data) {
+						console.log("老爸接受儿子的值:",data)
+						self.name = data
+					})
+				},
+				watch:{
+					name:function(){
+						//console.log(this.name)
+						//发送数据
+						bus.$emit('to-child', this.name)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

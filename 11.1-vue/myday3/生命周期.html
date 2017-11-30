@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<script src = "../js/vue.js"></script>
+		<script>
+			new Vue({
+				el:"#box",
+				data:{
+					name:"qd",
+				},
+				template:`
+					<div>
+						<input v-model = "name">
+						<p>{{name}}</p>
+					</div>
+				`,
+				beforeCreate:function(){
+					console.log("++++++++++++beforeCreate+++++++++++");
+					console.log(document.querySelector("p"));
+					console.log(this.$el);//模板还没生成
+					console.log(this.$data);//数据还没准备
+				},
+				created:function(){
+					console.log("++++++++++++created+++++++++++");
+				 
+					console.log(this.$el);//模板还没生成
+					console.log(this.$data);//数据已经准备好了
+				},
+				beforeMount:function(){
+					console.log("++++++++++++beforeMount+++++++++++");
+					 
+					console.log(this.$el);//模板已经生成
+					console.log(this.$data);//数据已经准备好了
+				},
+				mounted:function(){
+					console.log("++++++++++++mounted+++++++++++");
+					console.log(document.querySelector("p"));
+					console.log(this.$el);//模板已经准备好了 p
+					console.log(this.$data);//数据已经准备好
+				},
+				beforeUpdate:function(){
+					//alert(1)
+					//接受了数据模型，但是视图没更新
+					console.log(this.$el)//模板已经准备好了  p
+					console.log(this.$data)//数据已经准备好了
+					console.log("------------beforeUpdate------------")
+				},
+				updated:function(){
+					//alert(2)
+					//数据模型跟视图都更新
+					console.log(this.$el)//模板已经准备好了  p
+					console.log(this.$data)//数据已经准备好了
+					console.log("------------updated------------")
+				}
+			})
+		</script>
+	</body>
+</html>

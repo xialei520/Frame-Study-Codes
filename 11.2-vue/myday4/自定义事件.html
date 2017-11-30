@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box"> </div>
+		<script src = "../js/vue.js"></script>
+		<script>
+			var bus = new Vue();
+			Vue.component("xchild", {
+				template:`
+					<div style = "border:1px solid green">
+						<input v-model = "name">
+						<p>{{name}}</p>
+					</div>
+				`,
+				data:function(){
+					return{
+						name:"xiaowang"
+					}
+				},
+				watch:{
+					name:function(){
+						//发送数据
+						bus.$emit("to-father", this.name);//事件的名字
+					}
+				},
+				mounted:function(){
+					var self = this;
+					bus.$on("to-son", function(data){
+						console.log("儿子接收老爸的值：" ,data);
+						self.name = data;
+					})
+				}
+			})
+			new Vue({
+				el:"#box",
+				data:{
+					name:"xialei"
+				},
+				template:`
+					<div style="border:1px solid red">
+						<input v-model = "name">
+						<p>{{name}}</p>
+						<xchild></xchild>
+					</div>
+				`,
+				watch:{
+					name:function(){
+						//发送数据
+						bus.$emit("to-son", this.name);//事件的名字
+					}
+				},
+				mounted:function(){
+					var self = this;
+					bus.$on("to-father", function(data){
+						console.log("老爸接收儿子的值：" ,data);
+						self.name = data;
+					})
+				}
+			})
+		</script>
+	</body>
+</html>

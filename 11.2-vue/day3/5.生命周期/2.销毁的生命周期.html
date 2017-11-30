@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo">
+			<xheader v-if="bool"></xheader>
+			<p>{{name}}</p>
+			<button @click="deleteCp">删除或者新增组件</button>
+		</div>
+		<script src="../../js/vue.js"></script>
+		<script>
+			//组件
+			Vue.component("xheader",{
+				template:"<p>第一个组件</p>",
+				beforeDestroy:function(){
+					console.log("beforeDestroy")
+				},
+				destroyed:function(){
+					console.log("destroyed")
+				}
+			})
+			new Vue({
+				el:"#demo",
+				data:{
+					name:"qd",
+					bool:true
+				},
+				methods:{
+					deleteCp:function(){
+						this.bool = !this.bool
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

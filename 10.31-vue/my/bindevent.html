@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id = "box">
+			<input type="text" v-model= "username" :placeholder="tip.u"/>
+			<input type="password"  v-model="password" :placeholder="tip.p"/>
+			<input type="submit" v-on:click="login" value="登陆"/>
+			<p>{{content}}</p>
+		</div>
+		<script src = "../js/vue.js"></script>
+		<script src ="../js/jquery.js"></script>
+		<script type="text/javascript">
+			new Vue({
+				el:'#box',
+				data:{
+					name:"qingdao",
+					username:"",
+					password:"",
+					tip:{
+						u:"请输入用户名",
+						p:"请输入密码"
+					},
+					content:""
+					
+				},
+				methods:{
+					login:function(value){
+						var self = this;
+						console.log(this.username, this.password);
+						$.ajax({
+							url:"http://localhost/day2/home.php",
+							type:"GET",
+							data:{
+								username:self.username,
+								password:self.password
+							},
+							success:function(data){
+//								console.log(this);
+								self.content = data;
+							}
+						})
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

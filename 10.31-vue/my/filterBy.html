@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<input v-model="search"/>
+			<select v-model="select">
+				<option value="name">name</option>
+				<option value="id">id</option>
+			</select>
+			<ul>
+					<li v-for="a in arr|filterBy search in select">id:{{a.id}}, name:{{a.name}}</li>
+			<!--filterBy search in select通过id或name来筛选；当下拉列表选id时， 在搜索框中输入id值来查找对应的信息。-->
+			</ul>
+		</div>
+		<script src = "../js/vue1.js"></script>
+		<script>
+			new Vue({
+				el:"#box",
+				data:{
+					 select:"id",
+					 search:"",
+					 arr:[{
+					 	id:1,
+					 	name:"广州"
+					 }, {
+					 	id:7,
+					 	name:"青岛"
+					 }, {
+					 	id:2,
+					 	name:"大连"
+					 }, {
+					 	id:4,
+					 	name:"西安"
+					 }]
+				}
+			})
+		</script>
+	</body>
+</html>
