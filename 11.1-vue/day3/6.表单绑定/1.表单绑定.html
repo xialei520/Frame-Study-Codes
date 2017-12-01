@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo">
+			<p style="color: red;">1.文本值</p>
+			<input v-model="name" />
+			<p>{{name}}</p>
+			
+			<p style="color: red;">2.数值</p>
+			<input type="range" v-model="num" />
+			<p>{{num}}</p>
+			
+			<p style="color: red;">3.单选框</p>
+			<input type="radio" value="a" v-model="radioo" />
+			<input type="radio" value="b" v-model="radioo" />
+			<input type="radio" value="c" v-model="radioo" />
+			<p>{{radioo}}</p>
+			
+			<p style="color: red;">4.多选框</p>
+			<input type="checkbox" value="aa" v-model="cb" />
+			<input type="checkbox" value="bb" v-model="cb" />
+			<input type="checkbox" value="cc" v-model="cb" />
+			<p>{{cb}}</p>
+		</div>
+		<script src="../../js/vue.js"></script>
+		<script>
+			new Vue({
+				el:"#demo",
+				data:{
+					name:"qd",
+					num:66,
+					//单选
+					radioo:"c",
+					//多选
+					cb:[]
+				}
+			})
+		</script>
+	</body>
+</html>

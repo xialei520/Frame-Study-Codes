@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<input v-model = "name" />
+			<button :disabled = "bool">登陆</button>
+			<!--<p>{{computedName}}</p>-->
+		</div>
+		<script src = "../js/vue.js"></script>
+		<script >
+			new Vue({
+				el:"#box",
+				data:{
+					name:"qd",
+					bool:true
+				},
+//				用计算属性也可以进行监听
+				/*computed:{
+					computedName:function(){
+						if(this.name.length >= 6){
+							this.bool = false;
+						}else{
+							this.bool = true;
+						}
+						return this.name;
+					}
+				},*/
+				watch:{
+					name:function(value, oldValue){
+						console.log(value);
+						console.log(oldValue);
+						if(value.length >=6){
+							this.bool = false;
+						}else{
+							this.bool = true;
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

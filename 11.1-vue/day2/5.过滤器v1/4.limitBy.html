@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="demo">
+			<p>{{text|limitBy 3 4}}</p>
+			<button @click="pre">上一页</button>
+			<button @click="next">下一页</button>
+			<ul>
+				<li v-for="a in arr|limitBy 2 page">id:{{a.id}} name:{{a.name}}</li>
+			</ul>
+		</div>
+		<script src="../../js/vue1.js"></script>
+		<script>
+			new Vue({
+				el: "#demo",
+				data: {
+					page: 0,
+					text: "abcdefghijk",
+					arr: [{
+						name: "广州",
+						id: 5
+					}, {
+						name: "青岛",
+						id: 4
+					}, {
+						name: "深圳",
+						id: 7
+					}, {
+						name: "北京",
+						id: 1
+					}]
+				},
+				methods: {
+					pre: function() {
+						this.page = this.page - 2
+					},
+					next: function() {
+						this.page = this.page + 2
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>
