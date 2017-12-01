@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      .list-enter-active,
+      .list-leave-active
+      {
+        transition: all 1s;
+      }
+     .list-enter,
+     .list-leave-to
+     {
+       opacity: 0;
+       transform: translateY(30px);
+     }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <input type="text" name="" value="" v-model="search">
+      <transition-group name="list">
+        <li v-for="a in computedarr" :key="a.id">
+          id:{{a.id}}  name:{{a.name}}
+        </li>
+      </transition-group>
+    </div>
+    <script src = "../../js/vue.js"></script>
+    <script>
+      new Vue({
+        el:"#box",
+        data:{
+          search:'',
+          arr:[{
+            id:1,
+            name:"青岛"
+          },{
+            id:2,
+            name:"广州"
+          },{
+            id:3,
+            name:"武汉"
+          },{
+            id:4,
+            name:"北京"
+          }],
+          text:"jjjjjjjjj"
+        },
+        computed:{
+          computedarr:function(){
+            var self=this;
+            var newArr = this.arr.filter(function(value){
+              return value.name.indexOf(self.search) !==-1;
+            })
+            return newArr;
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

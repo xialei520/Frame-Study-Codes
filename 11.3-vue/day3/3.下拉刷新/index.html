@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				height: 100%;
+				width: 100%;
+			}
+			
+			li {
+				border-bottom: 1px solid gray;
+				padding: 50px;
+			}
+			
+			#fixed {
+				bottom: 0;
+				width: 100%;
+				overflow: auto;
+				position: absolute;
+				/*transition: all 1s;*/
+				top: 10%
+			}
+			
+			header {
+				text-align: center;
+				height: 10%;
+				width: 100%;
+				position: fixed;
+				line-height: 400%;
+			}
+		</style>
+		<div id="demo">
+			<header>下拉刷新</header>
+			<div id="fixed" v-scroll="loadMore">
+				<ul>
+					<li v-for="a in arr">{{a.title}}</li>
+				</ul>
+			</div>
+		</div>
+		<script src="../../js/vue.js"></script>
+		<script src="../../js/jquery.js"></script>
+		<script>
+			//全局指令
+			/*Vue.directive("scroll", {
+				bind: function(el, binding) {
+					console.log(el)
+					el.addEventListener("scroll", function(e) {
+						console.log(e.target.scrollHeight)
+						console.log(e.target.scrollTop)
+						console.log(e.target.offsetHeight)
+						if(e.target.offsetHeight + e.target.scrollTop >= e.target.scrollHeight) {
+							console.log("到底了")
+							binding.value()
+						}
+					})
+				}
+			})*/
+			new Vue({
+				el: "#demo",
+				data: {
+					//model
+					arr: []
+				},
+				methods: {
+					loadMore: function() {
+						var self = this;
+						$.ajax({
+							type: "get",
+							url: "http://localhost/1704/vuejs/%E7%AC%AC%E4%B8%89%E5%A4%A9/3.%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0/qqnews.json",
+							async: true,
+							success: function(data) {
+								console.log(data)
+								self.arr = self.arr.concat(data.newslist)
+							}
+						});
+					}
+				},
+				directives: {
+					scroll: {
+						bind: function(el, binding) {
+							console.log(el)
+							el.addEventListener("scroll", function(e) {
+								console.log(e.target.scrollHeight)
+								console.log(e.target.scrollTop)
+								console.log(e.target.offsetHeight)
+								if(e.target.offsetHeight + e.target.scrollTop >= e.target.scrollHeight) {
+									console.log("到底了")
+									binding.value()
+								}
+							})
+						}
+					}
+				},
+				//
+				mounted() {
+					this.loadMore()
+				}
+			})
+		</script>
+	</body>
+
+</html>

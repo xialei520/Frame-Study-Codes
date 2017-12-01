@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../css/weui.css">
+  </head>
+  <body>
+    <div id = "box"></div>
+    <script src= "../../js/vue.js"></script>
+    <script src= "../../js/zepto.js"></script>
+    <script>
+      var bus = new Vue();
+    </script>
+    <script src= "components/xheader.js"></script>
+    <script src= "components/xlist.js"></script>
+    <script src= "components/xloading.js"></script>
+    <script>
+      new Vue({
+        el:"#box",
+        template:`
+          <div>
+            <xheader></xheader>
+            <xlist></xlist>
+            <xloading></xloading>
+          </div>
+
+        `
+      })
+    </script>
+  </body>
+</html>

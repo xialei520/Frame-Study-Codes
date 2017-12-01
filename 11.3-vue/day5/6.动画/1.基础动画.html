@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			p{
+				font-size: 30px;
+			}
+			.fade-enter-active,
+			.fade-leave-active {
+				transition: all .5s;
+			}
+
+			.fade-enter,
+			.fade-leave-to
+			/* .fade-leave-active in below version 2.1.8 */
+
+			{
+				opacity: 0;
+				font-size: 0;
+			}
+
+			.fade-enter-to,
+			.fade-leave
+			/* .fade-leave-active in below version 2.1.8 */
+
+			{
+				opacity: 1;
+				font-size: 30px;
+			}
+
+			/*.fade-enter->.fade-enter-to*/
+			/*.fade-leave->.fade-leave-to*/
+		</style>
+	</head>
+
+	<body>
+		<div id="demo">
+			<!--用一个transition标签包含需要执行动画的节点-->
+			<p style="color:red">1.v-show动画</p>
+			<transition name="fade">
+				<p v-show="bool">v-show动画</p>
+			</transition>
+
+			<p style="color:red">2.v-if动画</p>
+			<transition name="fade">
+				<p v-if="bool">v-if动画</p>
+			</transition>
+			<button @click="changeBool">OK</button>
+		</div>
+		<script src="../../js/vue.js"></script>
+		<script>
+			new Vue({
+				el: "#demo",
+				data: {
+					bool: true
+				},
+				methods: {
+					changeBool: function() {
+						this.bool = !this.bool
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>
