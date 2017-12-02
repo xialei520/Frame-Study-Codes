@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<script src="../../js/vue.js"></script>
+		
+		<script>
+			//全局混合
+			Vue.mixin()
+			var publicData = {
+				data:function(){
+					return {
+						text:"公共数据"
+					}
+				},
+				methods:{
+					ok:function(){
+						console.log("123")
+					}
+				}
+			}
+			Vue.component("xheader",{
+				template:`
+					<div>
+						<header>头部 {{text}}</header>
+						<button @click="ko">ko</button>
+						<button @click="ok">ok</button>
+					</div>
+				`,
+				methods:{
+					ko:function(){
+						console.log("321")
+					}
+				},
+				//局部混合
+				mixins:[publicData]
+			})
+			Vue.component("xfooter",{
+				template:`
+					<footer>底部 {{text}}</footer>
+				`,
+				mixins:[publicData]
+			})
+			new Vue({
+				el:"#demo",
+				data:{
+					
+				},
+				template:`
+				<div>
+					<xheader></xheader>
+					<xfooter></xfooter>
+				</div>
+				`
+			})
+		</script>
+	</body>
+</html>

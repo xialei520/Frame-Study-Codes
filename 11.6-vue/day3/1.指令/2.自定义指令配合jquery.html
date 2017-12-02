@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	</head>
+	<body>
+		<div id="demo">
+			<!--v-model v-text v-html v-show-->
+			<p v-color="'red'">{{name}}</p>
+			<p v-color="'blue'">123</p>
+			<p v-showw="bool">123</p>
+			<button v-clickk:click="OK">OK</button>
+			<!--<p>{{'{'}}{{'{'}}{{'name'}}{{'}'}}{{'}'}}</p>-->
+		</div>
+		<script src="../../js/vue.js"></script>
+		<script src="../../js/jquery.js"></script>
+		<script>
+			//filter  内置的过滤器  自定义的过滤器
+			//direcitve 内置的指令 自定义的指令
+			Vue.directive("color",function(el,binding){
+				/*console.log(el);
+				el.style.color = binding.value
+				console.log(binding)*/
+				$(el).css("color",binding.value)
+			})
+			Vue.directive("showw",function(el,binding){
+				if(binding.value){
+					el.style.display = "block";
+				}else{
+					el.style.display = "none";
+				}
+			})
+			Vue.directive("clickk",function(el,binding){
+				console.log(binding)
+				el.addEventListener(binding.arg,binding.value)
+			})
+			new Vue({
+				el:"#demo",
+				data:{
+					name:"qd",
+					bool:true
+				},
+				methods:{
+					OK:function(){
+						console.log("ok")
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

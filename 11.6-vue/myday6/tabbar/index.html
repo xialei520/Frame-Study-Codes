@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<div id = "box"></div>
+		<script src = "../../js/vue.js"></script>
+		<!--<script src = "../../js/vue-router.js"></script>-->
+		<script src = "components/tabbar.js"></script>
+		<script>
+		 
+			new Vue({
+				el:"#box",
+				template:`
+					<div>
+ 
+						<tabbar></tabbar>
+					</div>
+				`,
+				components:{
+					tabbar:tabbar
+				}
+ 
+			})
+		</script>
+	</body>
+</html>

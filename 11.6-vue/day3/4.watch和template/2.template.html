@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<template id="footerTem">
+			<div style="border:1px solid black">
+				<p v-text="name"></p>
+				<button>OK</button>
+			</div>
+		</template>
+		<script type="x-template" id="headerTem">
+			<div style="border:1px solid red">
+				<p v-text="name"></p>
+				<button @click="test">OK</button>
+			</div>
+		</script>
+		<div id="header"></div>
+		<div id="container"></div>
+		<div id="footer"></div>
+		<script src="../../js/vue.js"></script>
+		<script src="template/header.js"></script>
+		<script src="template/container.js"></script>
+		<script src="template/footer.js"></script>
+	</body>
+
+</html>

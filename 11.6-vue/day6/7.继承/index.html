@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			1.产生新的对象
+			2.把this指向这个新的对象
+			3.执行函数里面的方法
+			4.返回新的对象
+			*/
+			function Child(){
+				this.name = "qd";
+				this.skill = ["ps","css","js"];
+				console.log("继承")
+				/*return {
+					a:"a",
+					b:"b"
+				}*/
+			}
+			Child.prototype.getAge = function(){
+				
+			}
+			function Father(){
+				Child.apply(this)
+				this.name = "gz";
+			}
+			//var obj = new Child();
+			//console.log(obj)
+			/*Father.prototype = new Child();
+			var obj2 = new Father();
+			console.log(obj2)*/
+			var obj2 = new Father();
+			console.log(obj2)
+			
+			
+			//Child()
+		</script>
+	</body>
+</html>

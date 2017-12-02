@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../../css/weui.css" />
+		<link rel="stylesheet" href="css/base.css" />
+	</head>
+	<body>
+		<div id="demo">
+		</div>
+		<script src="../../js/vue.js"></script>
+		<script src="../../js/zepto.js"></script>
+		<script>
+			//事件总线
+			var bus = new Vue();
+		</script>
+		<script src="components/xheader.js"></script>
+		<script src="components/xlist.js"></script>
+		<script src="components/xloading.js"></script>
+		<script>
+			new Vue({
+				el:"#demo",
+				data:{
+					name:"qd"
+				},
+				template:`
+					<div>
+						<xheader></xheader>
+						<xlist></xlist>
+						<xloading></xloading>
+					</div>
+				`,
+				methods:{
+					
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo">
+			<p>{{name|ed}}</p>
+			<p>{{123|s}}</p>
+			<p>{{10000|currencys}}</p>
+		</div>
+		<div id="demo2">
+			<p>{{name|ed}}</p>
+			<p>{{123|ed}}</p>
+			<p>{{10000|currencys}}</p>
+		</div>
+		<script src="../../js/vue1.js"></script>
+		<script>
+			//全局
+			Vue.filter("currencys",function(value){
+				return "$"+value
+			})
+			new Vue({
+				el:"#demo",
+				data:{
+					name:"qd",
+					
+				},
+				filters:{
+					//局部过滤器
+					ed:function(value){
+						return value+"ed"
+					},
+					s:function(value){
+						return value+"s"
+					}
+				}
+			})
+			new Vue({
+				el:"#demo2",
+				data:{
+					name:"qd",
+					
+				},
+				filters:{
+					
+				}
+			})
+		</script>
+	</body>
+</html>

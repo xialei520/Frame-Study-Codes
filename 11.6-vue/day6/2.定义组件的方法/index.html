@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="demo"></div>
+		<script src="../../js/vue.js"></script>
+		<script>
+			//1.全局定义组件
+			/*Vue.component("xheader",{
+				template:"<div>xheader组件</div>"
+			})*/
+			//2.方法二
+			var xheader = {
+				template: "<div>xheader组件</div>"
+			}
+
+			new Vue({
+				el: "#demo",
+				template: "<xheader></xheader>",
+				//3.局部组件
+				components: {
+					xheader: xheader
+				}
+			})
+		</script>
+	</body>
+
+</html>

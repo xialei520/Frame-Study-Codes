@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+  <body>
+    <div id ="box"></div>
+    <script src="../../js/vue.js"></script>
+    <script src="../../js/vue-router.js"></script>
+    <script>
+      var home = {
+        template:`
+          <div>
+            <ul>
+              <li><a href="#/detail/1/a">详情页1</a></li>
+              <li><a href="#/detail/2/b">详情页2</a></li>
+
+              <li><a href="#/detail/3/c">详情页3</a></li>
+
+            </ul>
+          </div>
+        `
+      }
+      var detail = {
+        template:`
+          <div>
+              第{{content}}详情页
+          </div>
+        `,
+        data:function(){
+          return{
+            content:""
+          }
+        },
+        mounted:function(){
+          console.log(this.$route.params.id);
+          this.content = this.$route.params.id;
+        }
+      }
+      var router = new VueRouter({
+         routes:[{
+           path:"/home",
+           component:home
+         },{
+           path:"/detail/:id/:num",
+           component:detail
+         }]
+      })
+      new Vue({
+        el:"#box",
+        router,
+        template:`
+          <router-view></router-view>
+        `,
+
+      })
+    </script>
+  </body>
+</html>
