@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script src="../../js/vue.js"></script>
+		<script src= "../../js/vuex.js"></script>
+		<script>
+			var store = new Vuex.Store({
+				state:{
+					bool:false,
+					title:"竟日头条",
+					ajax:function(){
+						console.log("ajax");
+					}
+				},
+				//获取state的方法
+				getters:{
+					getBool:function(state){
+						return state.bool;
+					},
+					getTitle:function(state){
+						return '<header>' + state.title + '</header>';
+					}
+				},
+				mutations:{
+					setBool:function(state, data){
+						state.bool = data;
+					},
+					setTitle:function(state, data){
+						state.title = data;
+					}
+				}
+			})
+			var xheader = {
+				template:`
+					<header>第一个组件</header>
+				`,
+				data:function(){
+					return{
+						name:"guangzhuo",
+						bool:null
+					}
+				}
+			}
+			new Vue({
+				el:"#box",
+				store,
+				data:{
+					name:"qingdao",
+					bool:null
+				},
+				template:`
+					<div>
+						<div>{{name}}</div>
+						<xheader></xheader>
+					</div>
+					
+				`,
+				components:{
+					xheader
+				},
+				mounted:function(){
+					console.log(this.$store.getters.getBool);
+					console.log(this.$store.getters.getTitle);
+					this.$store.commit("setTitle", "日日头条");
+					this.$store.commit("setBool", "['a', 'b', 'c']")
+				}
+			})
+		</script>
+	</body>
+</html>

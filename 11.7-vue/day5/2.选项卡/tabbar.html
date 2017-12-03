@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../../css/weui.css" />
+	</head>
+
+	<body>
+		<div id="demo">
+			<div class="weui-tabbar">
+				<a v-for="a in arr" @click="toggleTabbar(a.id)" href="javascript:;" class="weui-tabbar__item" :class="{'weui-bar__item_on':id==a.id}">
+					<span style="display: inline-block;position: relative;">
+                        <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+                        <span v-show="a.bool" class="weui-badge" style="position: absolute;top: -2px;right: -13px;">{{a.num}}</span>
+					</span>
+					<p class="weui-tabbar__label">{{a.title}}</p>
+				</a>
+				<!--<a href="javascript:;" class="weui-tabbar__item">
+					<img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+					<p class="weui-tabbar__label">通讯录</p>
+				</a>
+				<a href="javascript:;" class="weui-tabbar__item">
+					<span style="display: inline-block;position: relative;">
+                        <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+                        <span class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right: -6px;"></span>
+					</span>
+					<p class="weui-tabbar__label">发现</p>
+				</a>
+				<a href="javascript:;" class="weui-tabbar__item">
+					<img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+					<p class="weui-tabbar__label">我</p>
+				</a>-->
+			</div>
+		</div>
+		<script src="../../js/vue.js"></script>
+		<script>
+			new Vue({
+				el: "#demo",
+				data: {
+					arr:[{
+						title:"微信",
+						bool:true,
+						num:1,
+						id:1
+					},{
+						title:"通讯录",
+						bool:false,
+						num:1,
+						id:2
+					},{
+						title:"发现",
+						bool:false,
+						num:1,
+						id:3
+					},{
+						title:"我",
+						bool:false,
+						num:1,
+						id:4
+					}],
+					id:1
+				},
+				methods:{
+					toggleTabbar:function(id){
+						this.id = id
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

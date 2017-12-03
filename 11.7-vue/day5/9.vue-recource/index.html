@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo">
+			<p>{{name}}</p>
+		</div>
+		<script src="../../js/vue.js"></script>
+		<script src="../../js/vue-resource.js"></script>
+		<script>
+			new Vue({
+				el:"#demo",
+				data:{
+					name:"guangzhou"
+				},
+				mounted:function(){
+					console.log(this)
+					this.$http.get("http://localhost/qd1704/day5/9.vue-recource/data.json",{
+						params:{
+							age:11,
+							skill:"ps"
+						}
+					}).then(function(data){
+						console.log(data)
+						this.name = data.data.name
+					},function(err){
+						
+					})
+				}
+			})
+		</script>
+	</body>
+</html>

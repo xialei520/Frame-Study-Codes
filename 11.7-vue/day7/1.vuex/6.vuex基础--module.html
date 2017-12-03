@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="demo"></div>
+		<script src="../../js/vue.js"></script>
+		<script src="../../js/vuex.js"></script>
+		<script>
+			//公有的数据
+			var store = new Vuex.Store({
+				modules: {
+					a: {
+						state: {
+							bool: true,
+							title: "今日头条",
+							ajax: function() {
+								console.log("ajax")
+							}
+						}
+					},
+					b: {
+						state: {
+							bool: true,
+							title: "日日头条",
+							ajax: function() {
+								console.log("ajax")
+							}
+						}
+					}
+				}
+				//状态模型
+			})
+
+			var xheader = {
+				template: `
+					<div>第一个组件</div>
+				`,
+				//私有数据
+				//数据模型
+				data: function() {
+					return {
+						name: "gz",
+						bool: null
+					}
+				},
+				mounted() {
+				}
+			}
+
+			new Vue({
+				el: "#demo",
+				store: store,
+				//私有数据
+				data: {
+					name: "qd",
+					bool: null
+				},
+				template: `
+					<div>
+						<p>{{name}}</p>
+						<xheader></xheader>
+					</div>
+				`,
+				components: {
+					xheader: xheader
+				},
+				mounted() {
+					console.log(this.$store.state.a)
+					console.log(this.$store.state.b)
+				}
+			})
+		</script>
+	</body>
+
+</html>

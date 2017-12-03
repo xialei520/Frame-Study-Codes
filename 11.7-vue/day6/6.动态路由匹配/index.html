@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<script src="../../js/vue.js"></script>
+		<script src="../../js/vue-router.js"></script>
+		<script>
+			var home = {
+				template:`
+					<div>
+						<ul>
+							<li>
+								<a href="#/detail/1/a">第一条新闻</a>
+							</li>
+							<li>
+								<a href="#/detail/2/b">第二条新闻</a>
+							</li>
+							<li>
+								<a href="#/detail/3/c">第三条新闻</a>
+							</li>
+						</ul>
+					</div>
+				`
+			}
+			var detail = {
+				template:`
+					<div>第{{content}}详情页</div>
+				`,
+				data:function(){
+					return {
+						content:""
+					}
+				},
+				mounted:function(){
+					console.log(this.$route.params.num)
+					console.log(this.$route.params.apla)
+					this.content = this.$route.params.num
+				}
+			}
+			var router = new VueRouter({
+				routes:[{
+					path:"/home",
+					component:home
+				},{
+					path:"/detail/:num/:apla",
+					component:detail
+				}]
+			})
+			new Vue({
+				el:"#demo",
+				router:router,
+				template:`
+					<router-view></router-view>
+				`
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<script src="../../js/vue.js"></script>
+		<script src="components/firstcp.js"></script>
+		<script>
+			//Vue.filter()
+			//Vue.directive()
+			//定义组件
+			
+			Vue.component("secondCp",{
+				template:`
+					<div style="border:1px solid green">
+						<p>这是第二个组件</p>
+					</div>
+				`
+			})
+			//new Vue是最外层组件
+			new Vue({
+				el:"#demo",
+				template:`
+					<div style="border:1px solid blue;padding:10px">
+						<p>{{name}}</p>
+						<first-cp></first-cp>
+						<first-cp></first-cp>
+						<first-cp></first-cp>
+						<first-cp></first-cp>
+						
+						<second-cp></second-cp>
+					</div>
+				`,
+				data:{
+					name:"qd"
+				}
+			})
+		</script>
+	</body>
+</html>

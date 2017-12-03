@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<script src="../../js/vue.js"></script>
+		<script src="../../js/vue-router.js"></script>
+		<script>
+			var tab1 = {
+				template:"<div>选项卡1</div>"
+			}
+			
+			var tab2 = {
+				template:"<div>选项卡2</div>"
+			}
+			
+			var tab3 = {
+				template:"<div>选项卡3</div>"
+			}
+			
+			var router = new VueRouter({
+				//定义路由
+				routes:[{
+					path:"/index",
+					component:tab1
+				},{
+					path:"/tab2",
+					component:tab2
+				},{
+					path:"/tab3",
+					component:tab3
+				}]
+			})
+			
+			new Vue({
+				el:"#demo",
+				template:`
+					<div>
+					<a href="#/tab1">tab1</a>
+					<a href="#/tab2">tab2</a>
+					<a href="#/tab3">tab3</a>
+						<router-view></router-view>
+					</div>
+				`,
+				router
+			})
+		</script>
+	</body>
+</html>

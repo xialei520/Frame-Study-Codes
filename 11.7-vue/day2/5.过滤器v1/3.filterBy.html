@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo">
+			<input v-model="search"  />
+			<select v-model="select">
+				<option value="id">id</option>
+				<option value="name">name</option>
+			</select>
+			<ul>
+				<li v-for="a in arr|filterBy search in select">id:{{a.id}} name:{{a.name}}</li>
+			</ul>
+		</div>
+		<script src="../../js/vue1.js"></script>
+		<script>
+			new Vue({
+				el:"#demo",
+				data:{
+					select:"id",
+					search:"",
+					arr:[{
+						name:"广州",
+						id:5
+					},{
+						name:"青岛",
+						id:4
+					},{
+						name:"深圳",
+						id:7
+					},{
+						name:"北京",
+						id:1
+					}],
+				}
+			})
+		</script>
+	</body>
+</html>

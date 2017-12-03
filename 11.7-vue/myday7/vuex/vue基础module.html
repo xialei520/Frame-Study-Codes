@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id = "box"></div>
+    <script type="text/javascript" src = "../../js/vue.js"></script>
+    <script type="text/javascript" src = "../../js/vuex.js"></script>
+    <script type="text/javascript">
+      var store = new Vuex.Store({
+        modules:{
+          a:{
+            state:{
+              bool:true,
+              title:"今日头条",
+              ajax:function(){
+                console.log("ajax")
+              }
+            }
+          },
+          b:{
+            state:{
+              bool:false,
+              title:"天天头条",
+              ajax:function(){
+                console.log("jjjjjj")
+              }
+            }
+          }
+        }
+      })
+      var xheader = {
+        template:`
+          <header>第一个组件</header>
+        `
+      }
+      new Vue({
+        el:"#box",
+        store,
+        data:{
+          name:"qd"
+        },
+        template:`
+          <div>
+            <div>{{name}}</div>
+            <xheader></xheader>
+          </div>
+        `,
+        components:{
+          xheader:xheader
+        },
+        mounted(){
+          console.log(this.$store.state.a);
+          console.log(this.$store.state.b);
+
+        }
+      })
+    </script>
+  </body>
+</html>

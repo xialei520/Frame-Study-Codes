@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<div id = "box"></div>
+		<script src = "../../js/vue.js"></script>
+		<script src= "../../js/vuex.js"></script>
+		<script>
+			//公有数据
+			var store = new Vuex.Store({
+				state:{
+					name:"xialei",
+					bool:true,
+					title:"今日头条",
+					ajax:function(){
+						console.log('ajax');
+					}
+				}
+			})
+			var xheader = {
+				template:`
+					<div>第一个组件</div>
+				`,
+
+				//私有数据
+				data:function(){
+					return{
+						name:"gz",
+						bool:null
+					}
+				},
+				mounted:function(){
+					console.log(this);//this指代VueConponent
+					this.bool=this.$store.state.bool;
+					this.name = this.$store.state.name;
+				}
+			}
+			new Vue({
+				el:"#box",
+				store:store,
+				//私有数据
+				data:{
+					name:"qd",
+					bool:null,
+					title:""
+				},
+				template:`
+					<div>
+						<div>{{name}}</div>
+						<xheader></xheader>
+					</div>
+				`,
+				components:{
+					xheader:xheader
+				},
+				mounted:function(){
+					this.bool = this.$store.state.bool;
+					this.title = this.$store.state.title;
+				}
+		})
+		</script>
+	</body>
+</html>

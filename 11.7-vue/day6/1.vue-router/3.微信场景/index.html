@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+		<link href="css/base.css" rel="stylesheet">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="demo"></div>
+		<script src="../../../js/vue.js"></script>
+		<script src="../../../js/vue-router.js"></script>
+		<script src="template/index.js"></script>
+		<script src="template/indexChild/wechat.js"></script>
+		<script src="template/indexChild/directories.js"></script>
+		<script src="template/dialogue.js"></script>
+		<script>
+			var router = new VueRouter({
+				routes: [{
+					path: "/index",
+					component: index,
+					children: [{
+						path: "wechat",
+						component: wechat
+					}, {
+						path: "directories",
+						component: directories
+					}]
+				}, {
+					path: "/dialogue",
+					component: dialogue
+				}]
+			})
+			new Vue({
+				el: "#demo",
+				router: router,
+				template: `
+					<router-view></router-view>
+				`
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../../css/animate.css" />
+		<style>
+			.fade-enter-active {
+				animation: hinge 2s;
+			}
+			
+			.fade-leave-active {
+				animation: hinge 2s reverse;
+			}
+			
+			@keyframes bounce-in {
+				0% {
+					transform: scale(0);
+				}
+				50% {
+					transform: scale(1.5);
+				}
+				100% {
+					transform: scale(1);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="demo">
+			<!--用一个transition标签包含需要执行动画的节点-->
+			<p style="color:red">1.v-show动画</p>
+			<transition name="fade">
+				<p v-show="bool">v-show动画</p>
+			</transition>
+
+			<p style="color:red">2.v-if动画</p>
+			<transition name="fade">
+				<p v-if="bool">v-if动画</p>
+			</transition>
+			<button @click="changeBool">OK</button>
+		</div>
+		<script src="../../js/vue.js"></script>
+		<script>
+			new Vue({
+				el: "#demo",
+				data: {
+					bool: true
+				},
+				methods: {
+					changeBool: function() {
+						this.bool = !this.bool
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

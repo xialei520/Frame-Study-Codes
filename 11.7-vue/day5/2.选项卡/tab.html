@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../../css/weui.css" />
+	</head>
+	<body>
+		<div id="demo">
+			<div class="weui-navbar">
+				<div @click="navnarOn(a.id)" :id="a.id+'=='+id" v-for="a in arr" class="weui-navbar__item" :class="{'weui-bar__item_on':id==a.id}">
+					{{a.title}}
+				</div>
+			</div>
+			<div v-for="a in arr" v-show="id==a.id" style="position: absolute; top: 50px;">
+				{{a.data}}
+			</div>
+		</div>
+		<script src="../../js/vue.js"></script>
+		<script>
+			new Vue({
+				el: "#demo",
+				data: {
+					name: "qd",
+					arr:[{
+						title:"选项一",
+						id:1,
+						data:"第一页"
+					},{
+						title:"选项二",
+						id:2,
+						data:"第二页"
+					},{
+						title:"选项三",
+						id:3,
+						data:"第三页"
+					},{
+						title:"选项四",
+						id:4,
+						data:"第四页"
+					}],
+					id:1
+				},
+				methods:{
+					navnarOn:function(id){
+						console.log(id)
+						this.id = id
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

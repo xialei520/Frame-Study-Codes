@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../../css/weui.css" />
+	</head>
+
+	<body>
+		<div id="demo"></div>
+		<script src="../../js/vue.js"></script>
+		<script src="../../js/vue-router.js"></script>
+		<!--组件-->
+		<script src="components/tabbar.js"></script>
+		<script src="components/header.js"></script>
+		<script src="components/list.js"></script>
+
+		<!--页面-->
+		<script src="template/wechat.js"></script>
+		<script src="template/contact.js"></script>
+		<!--wechat tab-->
+		<script src="template/wechatTab/tab1.js"></script>
+		<script src="template/wechatTab/tab2.js"></script>
+		<script src="template/wechatTab/tab3.js"></script>
+		
+		<!--tab page-->
+		<script src="template/wechatTab/tabPage/page1.js"></script>
+		<script src="template/wechatTab/tabPage/page2.js"></script>
+		<script src="template/wechatTab/tabPage/page3.js"></script>
+		<script>
+			var router = new VueRouter({
+				routes: [{
+					path: "/wechat",
+					component: wechat,
+					children: [{
+						path: "tab1",
+						component: tab1,
+						children: [{
+							path: "page1",
+							component: page1,
+						}, {
+							path: "page2",
+							component: page2,
+						}, {
+							path: "page3",
+							component: page3,
+						}]
+					}, {
+						path: "tab2",
+						component: tab2
+					}, {
+						path: "tab3",
+						component: tab3
+					}]
+				}, {
+					path: "/contact",
+					component: contact
+				}]
+			})
+			new Vue({
+				el: "#demo",
+				router: router,
+				template: `
+					<router-view></router-view>
+				`
+			})
+		</script>
+	</body>
+
+</html>
