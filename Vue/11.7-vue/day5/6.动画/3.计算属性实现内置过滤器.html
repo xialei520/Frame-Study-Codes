@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>		
+			.list-enter-active,
+			.list-leave-active {
+				transition: all 1s;
+			}
+			
+			.list-enter,
+			.list-leave-to
+			/* .list-leave-active for below version 2.1.8 */
+			
+			{
+				opacity: 0;
+				transform: translateY(30px);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="demo">
+			<p style="color: red;">1.模拟filterBy</p>
+			<input v-model="search" />
+			<transition-group name="list" tag="ul">
+				<li v-for="a in computedarr" :key="a.id">id:{{a.id}} name:{{a.name}}</li>
+			</transition-group>
+		</div>
+		<script src="../../js/vue.js"></script>
+		<script>
+			new Vue({
+				el: "#demo",
+				data: {
+					search: "",
+					arr: [{
+						name: "广州",
+						id: 5
+					}, {
+						name: "青岛",
+						id: 4
+					}, {
+						name: "深圳",
+						id: 7
+					}, {
+						name: "北京",
+						id: 1
+					}],
+					text: "abcdefghijk"
+				},
+				computed: {
+					computedarr: function() {
+						var self = this;
+						var newArr = this.arr.filter(function(value) {
+							return value.name.indexOf(self.search) !== -1
+						})
+						return newArr
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

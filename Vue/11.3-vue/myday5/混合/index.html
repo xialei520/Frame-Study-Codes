@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+  <body>
+    <div id ="box"></div>
+    <script src="../../js/vue.js"></script>
+    <script>
+      var publicData = {
+        data:function(){
+          return{
+            text:"公共数据"
+          }
+        },
+        methods:{
+          ok:function(){
+            console.log("111111")
+          }
+        }
+      }
+      Vue.component("xheader", {
+        template:`
+          <div>
+            <button @click="ok">ok</button>
+            <header>
+            头部组件
+            </header>
+          </div>
+
+        `,
+        mixins:[publicData]
+      })
+      Vue.component("xfooter", {
+        template:`
+          <footer>
+          尾部组件{{text}}
+          </footer>
+        `,
+        mixins:[publicData]
+
+      })
+      new Vue({
+        el:"#box",
+        template:`
+          <div>
+            <xheader></xheader>
+            <xfooter></xfooter>
+          </div>
+        `
+      })
+    </script>
+  </body>
+</html>

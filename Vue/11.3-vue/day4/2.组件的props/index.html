@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<script src="../../js/vue.js"></script>
+		<script>
+			//全局定义
+			Vue.component("xHeader",{
+				template:`
+					<div style="border:1px solid green">
+						<p>{{name}}</p>
+					</div>
+				`,
+				//谨记组件这个data是要函数返回对象，因为这里要确保每个组件都拥有不同的数据模型
+				data:function(){
+					return {
+						name:"头部区域组件"
+					}
+				}
+			})
+			Vue.filter()
+			new Vue({
+				el:"#demo",
+				template:`
+					<div style="border:1px solid blue;padding:10px">
+						<p>{{name}}</p>
+						<x-container :getname="name"></x-container>
+					</div>
+				`,
+				data:{
+					name:"qd"
+				},
+				components:{
+					xContainer:{
+						props:["getname"],
+						template:`
+							<div style="border:1px solid red">
+								<x-header></x-header>
+								<p>内容区域组件</p>
+								<p>父组件的name值为:{{getname}}</p>
+							</div>
+						`,
+						mounted:function(){
+							console.log(this)
+							this.$parent.name = "gz"
+							this.$children[0].name = "头部区域组件111111"
+						}
+					}
+				},
+			})
+			//this.$parent
+			//this.$children
+			//props
+			//new Vue->xContainer->x-header
+		</script>
+	</body>
+</html>

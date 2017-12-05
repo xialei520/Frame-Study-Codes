@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../css/animate.css">
+    <style>
+      .fade-enter-active{
+        animation: hinge 2s;
+      }
+      .fade-leave-active{
+        animation: hinge 2s reverse;
+      }
+      @keyframes bounce-in {
+        0%{
+          transform:scale(0);
+        }
+        50%{
+          transform: scale(1.5);
+        }
+        100%{
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id = "box">
+      <transition name="fade">
+        <p v-show="bool">v-show动画</p>
+      </transition>
+      <transition name="fade">
+        <p v-if="bool">v-if动画</p>
+      </transition>
+      <button @click="changeBool">ok</button>
+    </div>
+    <script src = "../../js/vue.js"></script>
+    <script>
+      new Vue({
+        el:"#box",
+        data:{
+          bool:true
+        },
+        methods:{
+          changeBool:function(){
+            this.bool = !this.bool;
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="demo">
+
+		</div>
+		<script src="../../js/vue.js"></script>
+		<script>
+			new Vue({
+				el: "#demo",
+				//html
+				/*template:`
+					<div>
+						<p>{{name}}</p>
+					</div>
+				`,*/
+				//JS
+				render: function(createElement) {
+					return createElement(this.tag, {
+						attrs: {
+							name: this.name
+						},
+					}, [
+						createElement("p", {
+							style: {
+								color: 'red',
+								fontSize: '28px'
+							},
+						}, "这是什么"),
+						createElement("p", "这是什么")
+					])
+				},
+				data: {
+					name: "qd",
+					tag: "div"
+				}
+			})
+		</script>
+	</body>
+</html>

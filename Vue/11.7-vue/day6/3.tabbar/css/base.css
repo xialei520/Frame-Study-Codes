@@ -1,0 +1,30 @@
+header {
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	background-color: red;
+	color: white;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+	transition: all 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to
+/* .fade-leave-active in below version 2.1.8 */
+
+{
+	/*opacity: 0;*/
+	transform: scale(0);
+}
+
+.fade-enter-to,
+.fade-leave
+/* .fade-leave-active in below version 2.1.8 */
+
+{
+	/*opacity: 1;*/
+	transform: scale(1);
+}

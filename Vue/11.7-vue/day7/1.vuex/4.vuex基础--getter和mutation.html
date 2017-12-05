@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="demo"></div>
+		<script src="../../js/vue.js"></script>
+		<script src="../../js/vuex.js"></script>
+		<script>
+			//公有的数据
+			var store = new Vuex.Store({
+				//状态模型
+				state: {
+					bool: true,
+					title: "今日头条",
+					ajax: function() {
+						console.log("ajax")
+					}
+				},
+				//获取state的方法
+				getters: {
+					getBool: function(state) {
+						return state.bool
+					},
+					getTitle: function(state) {
+						return "<header>" + state.title + "</header>"
+					}
+				},
+				mutations: {
+					setBool: function(state, data) {
+						state.bool = data
+					},
+					setTitle: function(state, data) {
+						state.title = data
+					}
+				}
+			})
+
+			var xheader = {
+				template: `
+					<div>第一个组件</div>
+				`,
+				//私有数据
+				//数据模型
+				data: function() {
+					return {
+						name: "gz",
+						bool: null
+					}
+				},
+				mounted() {}
+			}
+
+			new Vue({
+				el: "#demo",
+				store: store,
+				//私有数据
+				data: {
+					name: "qd",
+					bool: null
+				},
+				template: `
+					<div>
+						<p>{{name}}</p>
+						<xheader></xheader>
+					</div>
+				`,
+				components: {
+					xheader: xheader
+				},
+				mounted() {
+					console.log(this.$store.getters.getBool)
+					console.log(this.$store.getters.getTitle)
+					this.$store.commit("setTitle","日日头条")
+					this.$store.commit("setBool",["a","b","c"])
+				}
+			})
+		</script>
+	</body>
+
+</html>

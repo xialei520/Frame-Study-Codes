@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--express nodejs mongodb ejs-->
+		<div id="demo">
+		</div>
+		<script src="../../js/vue.js"></script>
+		<script>
+			new Vue({
+				el:"#demo",
+				data:{
+					name:"qd"
+				},
+				template:`
+					<div>
+						<input v-model="name" />
+						<p>{{name}}</p>
+					</div>
+				`,
+				//V
+				//M
+				//<p>qd</p>
+				//编译之前，将要准备执行编译
+				beforeCreate:function(){
+					console.log("------------beforeCreate------------")	
+					console.log(document.querySelector("p"))
+					console.log(this.$el)//模板还没生成
+					console.log(this.$data)//数据还没准备
+				},
+				//编译之后  检查数据
+				created:function(){
+					console.log("------------created------------")					
+					console.log(this.$el)//模板还没生成
+					console.log(this.$data)//数据已经准备好了
+				},
+				
+				//检查模板
+				beforeMount:function(){
+					console.log("------------beforeMounted------------")	
+					//<p>{{name}}</p>
+					//转化为
+					//<p>qd</p>
+					console.log(this.$el)//模板已经准备好了  div
+					console.log(this.$data)//数据已经准备好了
+				},
+				mounted:function(){
+					//<div id="demo"></div>
+					//替换为
+					//<p>qd</p>
+					console.log("------------mounted------------")	
+					console.log(document.querySelector("p"))
+					console.log(this.$el)//模板已经准备好了  p
+					console.log(this.$data)//数据已经准备好了
+					
+					//最重要的阶段
+					//这个阶段可以获取节点
+					//操作DOM结构
+				},
+				beforeUpdate:function(){
+					//alert(1)
+					//接受了数据模型，但是视图没更新
+					console.log(this.$el)//模板已经准备好了  p
+					console.log(this.$data)//数据已经准备好了
+					console.log("------------beforeUpdate------------")
+				},
+				updated:function(){
+					//alert(2)
+					//数据模型跟视图都更新
+					console.log(this.$el)//模板已经准备好了  p
+					console.log(this.$data)//数据已经准备好了
+					console.log("------------updated------------")
+				}
+			})
+		</script>
+	</body>
+</html>

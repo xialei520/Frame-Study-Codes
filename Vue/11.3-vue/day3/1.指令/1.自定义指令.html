@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	</head>
+	<body>
+		<div id="demo">
+			<!--v-model v-text v-html v-show-->
+			<p v-color="'red'">{{name}}</p>
+			<p v-color="'blue'">123</p>
+		</div>
+		<script src="../../js/vue.js"></script>
+		<script>
+			//filter  内置的过滤器  自定义的过滤器
+			//direcitve 内置的指令 自定义的指令
+			Vue.directive("color",function(el,binding){
+				console.log(el);
+				el.style.color = binding.value
+				console.log(binding)
+			})
+			new Vue({
+				el:"#demo",
+				data:{
+					name:"qd"
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<div id = "box"></div>
+		<script src= "../../js/vue.js"></script>
+		<script src ="../../js/vuex.js"></script>
+		<script>
+			var store = new Vuex.Store({
+				state:{
+					bool:false,
+					title:"竟日头条",
+					ajax:function(){
+						console.log('ajax');
+					},
+					text:""
+				}
+			})
+			var xheader = {
+				template:`
+					<div>
+						<input v-model="text"/>
+						<button @click="changeValue">ok</button>
+					</div>
+				`,
+				data:function(){
+					return{
+						name:"gz",
+						text:""
+					}
+				},
+				methods:{
+					changeValue:function(){
+						console.log(this);
+						this.$store.state.bool = !this.$store.state.bool;
+						 
+					}
+				},
+				watch:{
+					text:function(){
+						this.$store.state.text= this.text   ;
+					}
+				}
+			}
+			new Vue({
+				el:"#box",
+				store:store,
+				data:{
+					name:"qd"
+					 
+				},
+				template:`
+					<div>
+						<p>{{name}}</p>
+						<p>{{text}}</p>
+						<p>{{bool}}</p>
+
+						<xheader></xheader>
+					</div>
+				`,
+				components:{
+					xheader:xheader
+				},
+				computed:{
+					bool:function(){
+						return this.$store.state.bool;
+					},
+					text:function(){
+						return this.$store.state.text;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

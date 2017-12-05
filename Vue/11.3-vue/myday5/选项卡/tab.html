@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../css/weui.css">
+  </head>
+  <body>
+    <div id="box">
+      <div class="weui-navbar">
+          <div @click="navnarOn(a.id)" v-for="a in arr" class="weui-navbar__item" :class="{'weui-bar__item_on':id==a.id}">
+             {{a.title}}
+          </div>
+
+          <div style="position:absolute; top:50px;">{{id}}</div>
+      </div>
+    </div>
+    <script src = "../../js/vue.js"></script>
+    <script>
+      new Vue({
+        el:"#box",
+        data:{
+          name:"qd",
+          arr:[{
+            title:"选项一",
+            id:1
+          },{
+            title:"选项二",
+            id:2
+          },{
+            title:"选项三",
+            id:3
+          }],
+          id:1
+        },
+        methods:{
+          navnarOn:function(id){
+            console.log(id);
+            this.id = id;
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

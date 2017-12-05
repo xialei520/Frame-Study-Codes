@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+    .f{float:left}
+div{overflow:hidden;//这句特别重要}
+p{width:200px}
+#p1
+{
+margin-bottom:-9999px;
+padding-bottom:9999px;
+background-color:red;
+}
+#p2
+{
+margin-bottom:-9999px;
+padding-bottom:9999px;
+background-color:blue;
+}
+效果图
+    </style>
+  </head>
+  <body>
+    <div>
+<p id="p1" class="f">
+hello<br/>
+
+hello<br/>
+
+hello<br/>
+
+hello
+
+</p>
+
+<p id="p2" class="f">world</p>
+</div>
+  </body>
+</html>
+
+
+
+var arr = "11111111";
+
+toString.call(arr)
+
+Array.isArray(arr)
+
+
+var xhr = new XMLHttpResquest();
+xhr.open("get", "1.txt", true);
+xhr.send();
+
+xhr.onreadystatechange = function(){
+  if(xhr.readyState == 4){
+    alert(xhr.responseText);
+  }
+}
+
+function oSort(arr){
+  var result = {};
+  var newArr = [];
+  for(var i = 0; i < arr.length; i++){
+    if(!result[arr[i]]){
+      newArr.push(arr[i]);
+      result[arr[i]] = 1;
+    }
+  }
+  return newArr;
+}
+var arr = [1,1 , 3, 4, 5, 6, 6];
+oSort(arr);
+
+function Parent(name,age){
+  this.name = name;
+  this.age = age;
+}
+Parent.prototype.show = function(){
+  console.log(this.age)
+}
+
+function Son(name){
+  this.name = name;
+}
+Son.prototype = new Parent();
+var p = new Parent("jj", 50);
+p.show();
+var s = new Son("gg");
+s.show();
+
+
+function Person (name) { this.name = name; }
+function Mother () { }
+Mother.prototype = {    //Mother的原型
+    age: 18,
+    home: ['Beijing', 'Shanghai']
+};
+Person.prototype = new Mother(); //Person的原型为Mother
+Person.prototype.lastName = 'Jin';
+
+
+
+function createPerson(name, age){
+  var person = new Object();
+  person.name = name;
+  person.sge = age;
+  person.sayname  = function(){
+    console.log(this.name)
+  }
+  return   person;
+}
+createPerson("xialei", 18)
+
+//原始模式，对象字面量方式
+var person = {
+  name:"Jack",
+  age:18,
+  sayName:function(){
+    alert(this.name)
+  }
+}
+//原始模式，Object构造函数方式
+var person = new Object();
+person.name = "Jack";
+person.age = 18;
+person.sayName = function(){
+  alert(this.name);
+}
+
+function createPerson(name, age){
+  var person = new Object();
+  person.name = "Jack";
+  person.age = 18;
+  person.sayName = function(){
+    alert(this.name);
+  }
+  return person;
+}
+
+function Person(name, age){
+  this.name = name;
+  this.age = age;
+  this.sayName = function(){
+    alert(this.name);
+  }
+}
+var p1 = new Person("Jack", 18);//创建一个p1对象
+Person("Jack", 18);//属性方法都给了window， window.name = "Jack"
+
+原型模式，直接定义prototype属性
+function Person(){
+  Person.prototype.name = "Jack";
+  Person.prototype.age = 18;
+  Person.prototype.sayName = function(){
+    alert(this.name)
+  }
+}
+原型模式，字面量定义方式
+function Person(){
+  Person.prototype = {
+    name:"Jack",
+    age:18,
+    sayName:function(){
+      alert(this.name);
+    }
+  }
+}
+var p1 = new Person("Jack", 18);//name = "Jack"
+
+
+function createPerson(o){
+  function F(){}
+    F.prototype = o
+    return new F()
+}
+var person = {
+  name:"xialei",
+  age:18
+}
+var person1 = createPerson(person);
+console.log(person1.name)
+
+function createPerson(o){
+  function F(){}
+  F.prototype = o;
+  return new F();
+}
+var person = {
+  name:"xialeeee",
+  age:19
+}
+var person1 = createPerson(person);
+console.log(person1.name)
+========================================================
+function Parent(){
+  this.name = "xiaoming"
+}
+Parent.prototype.showname = function(){
+  console.log(this.name);
+}
+function Son(){
+
+}
+Son.prototype = new Parent();
+var son1 = new Son();
+console.log(son1.name;
+
+==========================================================
+function Parent(){
+  this.name = "kkkk"
+}
+function Son(){
+  Parent.call(this);
+}
+var son1 = new Son();
+console.log(son1.name)
+
+===========================================================
+function Parent(){
+  this.name = "xiaoming";
+  this.age = 18
+}
+Parent.prototype.showage = function(){
+  console.log(this.age);
+}
+function Son(){
+  Parent.call(this)
+}
+Son.prototype = new Parent();
+var son1 = new Son();
+console.log(son1.name);
+son1.showage()
+======================================================
+function createPerson(o){
+  function F(){}
+  F.prototype = o;
+  return new F();
+}
+var person = {
+  name:"xialei",
+  age:19
+}
+var person1 = createPerson(person);
+console.log(person1.age);
