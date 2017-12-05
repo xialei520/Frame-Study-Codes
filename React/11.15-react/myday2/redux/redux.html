@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<script src="../../js/vue.js"></script>
+		<script src="../../js/redux.js"></script>
+		<script>
+			let store = Redux.createStore(function(state, action){
+				if(state){}else{
+					state={
+						name:"xialei",
+						age:"25"
+						
+					}
+					
+				}
+				switch(action.type){
+					case "a":
+						return Object.assign({}, state, {name:action.name})
+						break;
+						
+					case "b":
+						return Object.assign({}, state, {age:action.age})
+						break;
+						
+					default:
+						return state;
+						
+				}
+			})
+			store.getState();
+//			store.dispatch({type:"a", name:"xiaoming"})
+			store.dispatch({type:"b", age:"18"})
+			console.log(store.getState())
+			new Vue({
+				el:"#demo",
+				data:{
+					
+				},
+				mounted(){
+					
+				}
+			})
+		</script>
+	</body>
+</html>

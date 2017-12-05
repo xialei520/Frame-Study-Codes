@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<!--react-核心文件-->
+		<script src="../js/react.js"></script>
+		<!--react操作虚拟DOM的文件-->
+		<script src="../js/react-dom.js"></script>
+		<!--把JSX/ES6+转为ES5-->
+		<script src="../js/babel.js"></script>
+		<script type="text/babel">
+			let output = function(){
+				let name = "hello world2"
+				return name
+			}
+			//M
+			ReactDOM.render(
+				//View
+				//必须只能有一个跟节点
+				<div>
+					<h1>{output()}</h1>
+					
+					
+				</div>
+				,
+				//el
+				document.querySelector("#demo")
+			)
+		</script>
+	</body>
+</html>

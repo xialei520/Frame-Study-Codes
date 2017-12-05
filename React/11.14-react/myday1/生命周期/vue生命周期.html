@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id ="demo"></div>
+		<script src= '../../js/vue.js'></script>
+		<script>
+			new Vue({
+				el:"#demo",
+				data:{
+					content:"hello"
+				},
+				template:`
+					<div>{{content}}</div>
+				`,
+				beforeMount(){
+					alert("beforeMount");
+					console.log(this.$el);
+					console.log(this.$data)
+				},
+				mounted(){
+					alert("Mounted");
+					console.log(this.$el);
+					console.log(this.$data)
+				}
+			})
+		</script>
+	</body>
+</html>

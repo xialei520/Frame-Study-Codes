@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id ="demo"></div>
+		<script src= "../../js/react.js"></script>
+		<script src="../../js/react-dom.js"></script>
+		<script src= "../../js/babel.js"></script>
+		<script type="text/babel">
+			let data={
+				name:"qingdao",
+				style:{
+					fontSize:"49px",
+					color:"red"
+				},
+				arr:["a", "b", "c"]
+			}
+			let methods = {
+				test:function(){
+					console.log(data.name);
+					return data.name;
+				}
+			}
+			ReactDOM.render(
+				<div>
+					<p>{data.name}</p>
+					<p style={data.style}>{data.name}</p>
+					<div>{methods.test()}</div>
+					<button id={data.name} onClick={methods.test}>ok</button>
+				</div>,
+				document.querySelector("#demo")
+			)
+		</script>
+	</body>
+</html>

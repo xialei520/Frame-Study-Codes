@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<!--react-核心文件-->
+		<script src="../js/react.js"></script>
+		<!--react操作虚拟DOM的文件-->
+		<script src="../js/react-dom.js"></script>
+		<!--把JSX/ES6+转为ES5-->
+		<script src="../js/babel.js"></script>
+		<script type="text/babel">
+			let K3 = React.createClass({
+        propTypes: {
+          name: React.PropTypes.string.isRequired,
+        },
+        getDefaultProps: function() {
+          return {
+            name: 'Runoob'
+          };
+        },
+				render:function(){
+					return (
+						<div style={{border:"1px solid "+this.props.color}}>
+              <p>{(function(self){
+                if(self.props.isshow=='true'){
+                  return self.props.name
+                }
+                console.log(self.props)
+              })(this)}</p>
+						</div>
+					)
+				}
+			})
+			//JSX
+			ReactDOM.render(
+				<div>
+					<K3 name={(function(){
+            return 1
+          })()} isshow="true" color="red"></K3>
+          <K3 isshow="true" color="blue"></K3>
+				</div>
+				,
+				document.querySelector("#demo")
+			)
+		</script>
+	</body>
+</html>

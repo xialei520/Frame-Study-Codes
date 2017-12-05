@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="demo"></div>
+		<script src="../js/vue.js"></script>
+		<script>
+			new Vue({
+				el: "#demo",
+				data:{
+					username:"",
+          password:""
+				},
+        methods:{
+          login:function(){
+            console.log(this.username,this.password)
+          }
+        },
+				template:`
+					<div>
+						<input v-model="username" />
+            <input v-model="password" />
+            <p>{{username}}</p>
+            <p>{{password}}</p>
+						<button @click="login()">登录</button>
+					</div>
+				`
+			})
+		</script>
+	</body>
+
+</html>

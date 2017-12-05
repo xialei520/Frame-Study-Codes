@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="demo"></div>
+		<script src="../js/vue.js"></script>
+		<script>
+			Vue.component("k3",{
+				template:`
+					<div>组件</div>
+				`
+			})
+			new Vue({
+				el: "#demo",
+				/*render: function(createElement) {
+					return createElement("h1", "hello world")
+				},*/
+				data:{
+					content:"hello world!"
+				},
+				methods:{
+					test:function(){
+						console.log("ok")
+					}
+				},
+				template:`
+					<div>
+						<h1>{{content}}</h1>
+						<k3 />
+						<button @click="test">ok</button>
+					</div>
+				`
+			})
+		</script>
+	</body>
+
+</html>

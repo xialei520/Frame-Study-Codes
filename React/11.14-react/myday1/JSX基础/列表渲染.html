@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<!--react-核心文件-->
+		<script src="../js/react.js"></script>
+		<!--react操作虚拟DOM的文件-->
+		<script src="../js/react-dom.js"></script>
+		<!--把JSX/ES6+转为ES5-->
+		<script src="../js/babel.js"></script>
+		<script type="text/babel">
+			ReactDOM.render(
+				<ul>{(function(){
+					let arrHTML = [1, 3, 5, 6];
+					return arrHTML.map(function(item){
+						if(item == 3){
+//							return <p>{item}</p>
+						}else{
+							return <li>{item}</li>
+							
+						}
+					})
+				})()}</ul>,
+				document.querySelector("#demo")
+			)
+		</script>
+	</body>
+</html>

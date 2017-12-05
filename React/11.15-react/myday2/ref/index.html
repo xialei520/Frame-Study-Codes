@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<script src= "../../js/react.js"></script>
+		<script src="../../js/react-dom.js"></script>
+		<script src="../../js/babel.js"></script>
+		<script type="text/babel">
+			let Selectcp = React.createClass({
+					getSelectValue:function(){
+						
+					},
+					render(){
+						return (<div>
+							<p ref = "name">NAme</p>
+							<p ref="skill">skill</p>
+							
+						</div>)
+					},
+					componentDidMount(){
+						{/*获取ref的值为name和skill的节点*/}
+						console.log(this.refs.name)
+						console.log(this.refs.skill)
+						console.log(this.refs.name.innerHTML)
+						console.log(this.refs.skill.innerHTML)
+						
+						
+					}
+				})
+			ReactDOM.render(
+				
+				<div>
+					<Selectcp/>
+				</div>,
+				document.querySelector("#demo")
+			)
+		</script>
+	</body>
+</html>

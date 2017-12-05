@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/weui.css"/>
+		<link rel="stylesheet" type="text/css" href="./css/base.css"/>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<script src= "../../js/react.js"></script>
+		<script src="../../js/react-dom.js"></script>
+		<script src="../../js/babel.js"></script>
+		<script type="text/babel" src = "components/Xheader.jsx"></script>
+		<script type="text/babel" src="components/Xsearch.jsx"></script>
+		<script type="text/babel" src="components/Xpanel.jsx"></script>
+		<script type="text/babel">
+			ReactDOM.render(
+				<div>
+					<Xheader/>
+					<Xsearch/>
+					<Xpanel/>
+				</div>,
+				document.querySelector("#demo")
+			)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../../css/weui.css" />
+	</head>
+	<body>
+		<div id="demo"></div>
+		<script src="../../js/react.js"></script>
+		<script src="../../js/react-dom.js"></script>
+		<script src= "../../js/redux.js"></script>
+		<script src="../../js/babel.js"></script>
+		<script type="text/babel">
+			let store = Redux.createStore(function(state, action){
+				if(state){}else{
+					return {
+						bool:false
+					}
+				}
+				switch(action.type){
+					case "showActionsheet":
+					return Object.assign({}, state, {bool:action.bool})
+					break;
+					default:
+					return state
+				}
+			})
+			let Buttoncp = React.createClass({
+				getInitialState:function(){
+					return {
+						bool:false
+					}
+				},
+				render:function(){
+					return (<div>
+						<div className="weui-skin_android" id="androidActionsheet" style={{opacity: 1,display: this.state.bool?"block":"none"}}>
+              <div className="weui-mask"></div>
+              <div className="weui-actionsheet">
+                  <div className="weui-actionsheet__menu">
+                      <div className="weui-actionsheet__cell">示例菜单</div>
+                      <div className="weui-actionsheet__cell">示例菜单</div>
+                      <div className="weui-actionsheet__cell">示例菜单</div>
+                  </div>
+              </div>
+            </div>
+					</div>)
+				},
+				componentDidMount:function(){
+					var self = this;
+					store.subscribe(function(){
+						self.setState({
+							bool:store.getState().bool
+          				  
+							
+						})
+						console.log(store.getState())
+					})
+				}
+			})
+			let Actionsheet = React.createClass({
+				showActionsheet:function(){
+					store.dispatch({type:"showActionsheet",bool:true})
+				},
+				render:function(){
+					return(<div>
+						<button onClick ={this.showActionsheet}>ok</button>
+					</div>)
+				}
+			})
+			ReactDOM.render(
+				<div>
+					<Buttoncp/>
+					<Actionsheet/>
+				</div>,
+				document.querySelector("#demo")
+			)
+		</script>
+	</body>
+</html>

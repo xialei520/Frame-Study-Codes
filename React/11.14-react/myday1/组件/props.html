@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo">
+			
+		</div>
+		<!--react-核心文件-->
+		<script src="../../js/react.js"></script>
+		<!--react操作虚拟DOM的文件-->
+		<script src="../../js/react-dom.js"></script>
+		<!--把JSX/ES6+转为ES5-->
+		<script src="../../js/babel.js"></script>
+		<script type="text/babel">
+			let Child = React.createClass({
+				render:function(){
+					return <p style={{border:"1px solid green"}}>子组件啊{this.props.name}</p>
+				}
+			})
+			let K3 = React.createClass({
+				render:function(){
+					return 	<div style={{border:'1px solid red'}}>
+									父组件
+									<p>{this.props.name}</p>
+									<p>{this.props.skill}</p>
+									<p>{(function(self){
+										console.log(self.props);
+										console.log(self);
+										
+									})(this)}</p>
+									<Child name = {this.props.name}/>
+								</div>
+				}
+			})
+			ReactDOM.render(
+				<div>
+					<p >jjjjjj</p>
+					<K3 name='java' skill = "ps"/>
+				</div>,
+				document.querySelector("#demo")
+			)
+		</script>
+	</body>
+</html>

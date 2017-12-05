@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+    <div id="demo"></div>
+		<!--react-核心文件-->
+		<script src="../js/react.js"></script>
+		<!--react操作虚拟DOM的文件-->
+		<script src="../js/react-dom.js"></script>
+		<!--把JSX/ES6+转为ES5-->
+		<script src="../js/babel.js"></script>
+    <script type="text/babel">
+      var Selectcp = React.createClass({
+        getSelectValue(e){
+          console.log(e.target.value)
+        },
+        render(){
+          return (
+            <div>
+              <select onChange={this.getSelectValue}>
+                <option value="1">a</option>
+                <option value="2">b</option>
+                <option value="3">c</option>
+              </select>
+
+              <textarea onChange={this.getSelectValue}></textarea>
+            </div>
+          )
+        }
+      })
+      ReactDOM.render(
+        <div>
+          <Selectcp />
+        </div>,
+        document.getElementById("demo")
+      )
+    </script>
+	</body>
+</html>

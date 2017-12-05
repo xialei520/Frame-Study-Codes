@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/weui.css"/>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<script src= "../../js/react.js"></script>
+		<script src="../../js/react-dom.js"></script>
+		<script src="../../js/redux.js"></script>
+		<script src="../../js/babel.js"></script>
+		<script type="text/babel">
+			let store = Redux.createStore(function(state, action){
+				if(state){}else{
+					state={
+						bool:false,
+						img:""
+					}
+				}
+				switch(action.type){
+					case "showGallery":
+					return Object.assign({}, state, {bool:action.bool, img:action.img})
+					break;
+					default:
+					return state;
+				}
+			})
+			let Imgcp = React.createClass({
+				getInitialState:function(){
+					return{
+						img:"../../img/1.jpg"
+					}
+				},
+				showGallery:function(){
+					 let self = this;
+					 console.log(store);
+					 store.dispatch({type:"showGallery", bool:true, img:this.state.img})
+				},
+				render:function(){
+					return (
+						<div>
+							<img onClick={this.showGallery} src={this.state.img}/>
+						</div>
+					)
+				}
+			})
+			let Gallery = React.createClass({
+				getInitialState:function(){
+					return {
+						bool:false,
+						img:""
+					}
+				},
+				render:function(){
+					return (
+						<div className="weui-gallery" style={{display:this.state.bool? "block":"none"}}>
+					        <span className="weui-gallery__img" style = {{backgroundImage:"url("+this.state.img+")"}} ></span>
+					        <div className="weui-gallery__opr">
+					            <a href="javascript:" className="weui-gallery__del">
+					                <i className="weui-icon-delete weui-icon_gallery-delete"></i>
+					            </a>
+					        </div>
+					    </div>
+					)
+				},
+				componentDidMount:function(){
+					var self =this;
+					store.subscribe(function(){
+						self.setState({
+						bool:store.getState().bool,
+						img:store.getState().img
+					})
+					})
+					
+				}
+			})
+			ReactDOM.render(
+				<div>
+					<Imgcp/>
+					<Gallery/>
+				</div>,
+				document.querySelector("#demo")
+			)
+		</script>
+	</body>
+</html>

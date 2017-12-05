@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<script src="../../js/vue.js"></script>
+		<script src="../../js/vuex.js"></script>
+		<script>
+			Vue.component("xheader",{
+				data:function(){
+					return{
+						name:"qd"
+					}
+				},
+				template:`
+					<div>
+						<input v-model = "name"/>
+						<div>{{name}}</div>
+						<div>头部</div>
+					</div>
+				`,
+				watch:{
+					name:function(){
+						console.log(this.name);
+						this.$store.dispatch("SETNAMEACTION", this.name)
+					}
+				}
+			})
+			Vue.component("xfooter", {
+				 
+				template:`
+					<p>{{name}}</p>
+				`,
+				 
+				computed:{
+					name:function(){
+						console.log("GETNAME");
+						return this.$store.getters.GETNAME;
+					}
+				},
+				
+			})
+			let store = new Vuex.Store({
+				state:{
+					name:"gz"
+				},
+				mutations:{
+					SETNAME:function(state, data){
+						state.name = data;
+					}
+				},
+				actions:{
+					SETNAMEACTION:function(context, data){
+					console.log("SETNAMEACTION");
+					context.commit("SETNAME", data);
+					}
+				},
+				getters:{
+					GETNAME:function(state){
+						return state.name;
+						console.log("GETNAME")
+					}
+				}
+			})
+			new Vue({
+				el:"#demo",
+				store:store,
+				template:`
+					<div style = "border:1px solid red">
+						<xheader></xheader>
+						<xfooter></xfooter>
+					</div>
+				`
+			})
+		</script>
+	</body>
+</html>

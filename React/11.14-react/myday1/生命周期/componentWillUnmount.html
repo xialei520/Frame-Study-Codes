@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo">
+			
+		</div>
+		<!--react-核心文件-->
+		<script src="../../js/react.js"></script>
+		<!--react操作虚拟DOM的文件-->
+		<script src="../../js/react-dom.js"></script>
+		<!--把JSX/ES6+转为ES5-->
+		<script src="../../js/babel.js"></script>
+		<script type="text/babel">
+			let Child = React.createClass({
+				render:function(){
+					return (<div>子组件</div>)
+				},
+				componentWillUnimount:function(){
+					console.log("----------componentWillUnimount-----------")
+				}
+			})
+			let K3 = React.createClass({
+				getInitialState:function(){
+					return {
+						skill:'ps',
+						bool:true
+					}
+				},
+				setValue:function(e){
+					this.setState({
+						skill:e.target.value
+					})
+				},
+				render:function(){
+					return(<div>
+						<input value={this.state.skill}  onChange={this.setValue}/ >
+						<p>{this.state.skill}</p>
+						{(function(self){
+							if(self.state.bool){
+								return <Child/>
+							}else{
+								return;
+							}
+						})(this)}
+					</div>)
+				},
+				shouldComponentUpdate:function(){
+					if(this.state.skill.length > 8){
+						this.setState({
+							bool:false
+						})
+						return true;
+						
+					}else{
+						this.setState({
+							bool:true
+						})
+						return true;
+					}
+
+				}
+			})
+			ReactDOM.render(
+				<di>
+					<K3/>
+				</di>,
+				document.querySelector("#demo")
+			)
+		</script>
+	</body>
+</html>

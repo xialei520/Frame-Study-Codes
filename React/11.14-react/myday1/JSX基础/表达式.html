@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id = "demo"></div>
+		<script src= "../js/react.js"></script>
+		<script src= "../js/react-dom.js"></script>
+		<script src= "../js/babel.js"></script>
+		<script type="text/babel">
+			var str = "12434"
+			var skill = "hello world"
+			let obj = {
+				name:"xialei",
+				arr:[1, 3, 4, 65,0]
+			}
+			let arr = ["js", "ps", "java"]
+			
+			let arrHTML = [<li key = "1">1</li>, <li key="2">2</li>, <li key="3">3</li>]
+			let bool = true
+			
+			let num =1
+			ReactDOM.render(
+				<div>
+					<p>{str}</p>
+					<p>{skill}</p>
+					
+					<p>{obj.arr[4]}</p>
+					
+					<p>{arr[2]}</p>
+					<p>{arr}</p>
+					
+					<ul>{arrHTML}</ul>
+					
+					<p>{bool?"真的":"假的"}</p>
+					<p>{bool?!bool?1:2:"假的"}</p>
+					<p>{num/3+3}</p>
+					
+					<p id =  {"jjjj"}></p>
+					<p id =  {skill}></p>
+					<p style={{color:"red", fontSize:"28px"}}>hahhahahah</p>
+					
+					{/*jjjajajjajjajajaj*/}
+					{/*hhahahhahah*/}
+					
+					
+					<p>{(function(){
+						return "nannnnnn"
+					})()}</p>
+					<p>{(function(){
+						return "哈哈哈"
+					})()}</p>
+				</div>,
+				document.querySelector("#demo")
+			)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="demo"></div>
+		<script src="../js/vue.js"></script>
+		<script>
+			Vue.component("k3",{
+        props:["name"],
+				template:`
+					<div>组件{{name}}</div>
+				`,
+				data:function(){
+					return {}
+				}
+			})
+			new Vue({
+				el: "#demo",
+				data:{
+					content:"hello world!"
+				},
+				template:`
+					<div>
+						<input v-model="content" />
+						{{content}}
+						<k3 :name="content" />
+					</div>
+				`
+			})
+		</script>
+	</body>
+
+</html>

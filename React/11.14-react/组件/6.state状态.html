@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<!--react-核心文件-->
+		<script src="../js/react.js"></script>
+		<!--react操作虚拟DOM的文件-->
+		<script src="../js/react-dom.js"></script>
+		<!--把JSX/ES6+转为ES5-->
+		<script src="../js/babel.js"></script>
+		<script type="text/babel">
+      // s(m)->v
+
+      
+      // v -> s
+			let K3 = React.createClass({
+        getInitialState:function(){
+          return {
+            skill:"pss",
+          }
+        },
+        changeValue:function(e){
+          console.log(e.target.value)
+          this.setState({
+            skill:e.target.value
+          })
+        },
+				render:function(){
+          // 私有数据
+          let state = {
+            name:"qd"
+          };
+					return (
+						<div style={{border:"1px solid "+this.props.color}}>
+              {state.name}
+              <p>{(function(self){
+                console.log(self)
+              })(this)}</p>
+
+              <input value={this.state.skill} onChange={this.changeValue} />
+              <p>{this.state.skill}</p>
+						</div>
+					)
+				}
+			})
+			//JSX
+			ReactDOM.render(
+				<div>
+          <K3></K3>
+				</div>
+				,
+				document.querySelector("#demo")
+			)
+		</script>
+	</body>
+</html>

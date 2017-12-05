@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<!--react-核心文件-->
+		<script src="../js/react.js"></script>
+		<!--react操作虚拟DOM的文件-->
+		<script src="../js/react-dom.js"></script>
+		<!--把JSX/ES6+转为ES5-->
+		<script src="../js/babel.js"></script>
+		<script type="text/babel">
+			//M
+			let name = "hello world"
+			let skill = "js"
+			let obj = {
+				place: "qd",
+				interest:["ps","css","js"]
+			}
+			let arr = ["ps","css","js"]
+			let arrHTML = [<li key="1">1</li>,<li key="2">2</li>,<li key="3">3</li>]
+			let bool = true
+			let num = 1
+			
+			//V
+			ReactDOM.render(
+				<div>
+					<p style={{color:'red',fontSize:"30px"}}>1.字符串</p>
+					<p>{name}</p>
+					<p>{skill}</p>
+					
+					<p style={{color:'red',fontSize:"30px"}}>2.对象</p>
+					<p>{obj.interest[0]}</p>
+					
+					<p style={{color:'red',fontSize:"30px"}}>3.数组</p>
+					<p>{arr[2]}</p>
+					<ul>
+						<div>{arrHTML}</div>
+					</ul>
+					
+					<p style={{color:'red',fontSize:"30px"}}>4.布尔值</p>
+					<p>{bool?"真的":"假的"}</p>
+					<p>{bool?(!bool?"1":"2"):"假的"}</p>
+				
+					<p style={{color:'red',fontSize:"30px"}}>5.数字</p>
+					<p>{num/5+1}</p>
+					
+					<p style={{color:'red',fontSize:"30px"}}>6.属性值</p>
+					<p id={skill}>属性值</p>
+					<p style={{color:'blue',fontSize:"30px"}}>属性值</p>
+				
+					<p style={{color:'red',fontSize:"30px"}}>7.注释</p>
+					{/*注释*/}
+					<p style={{color:'red',fontSize:"30px"}}>8.函数</p>
+					<p>{(function(){
+						return "你好"
+					})()}</p>
+				</div>,
+				document.querySelector("#demo")
+			)
+		</script>
+	</body>
+</html>

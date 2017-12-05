@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<!--react-核心文件-->
+		<script src="../js/react.js"></script>
+		<!--react操作虚拟DOM的文件-->
+		<script src="../js/react-dom.js"></script>
+		<!--把JSX/ES6+转为ES5-->
+		<script src="../js/babel.js"></script>
+		<script type="text/babel">
+			//定义组件的方法 组件首字母大写
+			let Child = React.createClass({
+				render:function(){
+					return <div>子组件</div>
+				}
+			})
+			let K3 = React.createClass({
+				render:function(){
+					return (
+						<div>
+							父组件组件
+							<Child />
+						</div>
+					)
+				}
+			})
+			//JSX
+			ReactDOM.render(
+				//必须只能有一个跟节点
+				<div>
+					<h1>hello world</h1>
+					<h1>hello world</h1>
+					<K3></K3>
+				</div>
+				,
+				//el
+				document.querySelector("#demo")
+			)
+		</script>
+	</body>
+</html>
