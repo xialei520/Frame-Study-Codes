@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="webApp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div ng-controller = "index">
+      <p>{{name}}</p>
+      <!-- ng-bind相当于vue中的v-text -->
+      <p ng-bind=name>{{}}</p>
+      <!-- 显示与隐藏 -->
+      <p ng-show=bool>显示与隐藏</p>
+      <!-- true表示隐藏 -->
+      <p ng-hide=!bool>hide显示与隐藏</p>
+      <p ng-if=!bool>删除或增加节点</p>
+      <p ng-if=bool>删除或增加节点</p>
+      <div ng-include="'./html/template.html'"></div>
+
+
+      <p ng-init="skill='ps'">{{skill}}</p>
+      <input ng-model="name" type="text">
+      <p>{{name}}</p>
+      <select ng-model="name">
+        <option value="a">1</option>
+        <option value="b">2</option>
+        <option value="c">3</option>
+      </select>
+      <textarea ng-model="name"></textarea>
+      <select ng-model="name" ng-options="item for item in names"></select>
+
+      <ul>
+        <li ng-repeat="n in names">{{n}}</li>
+        <li ng-repeat="n in names">{{n}}</li>
+      </ul>
+      <input type="range" ng-model="size">
+      <p ng-style="{color:color, fontSize:size + 'px'}">{{name}}</p>
+      <p ng-class="{'red':bool, 'focus':bool}">{{name}}</p>
+    </div>
+    <script src = "../js/angular.js"></script>
+    <script >
+      angular.module("webApp", []).controller("index", function($scope){
+        $scope.name = "kkkk";
+        $scope.bool = true;
+        $scope.color = "blue";
+        $scope.size = 18;
+        $scope.names = ["a", "b", "c"]
+      })
+    </script>
+  </body>
+</html>

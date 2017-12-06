@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body ng-app = "ngApp">
+    <div ng-controller="index">
+      <form action="">
+        <input type="email" name="username" ng-model="username">
+        <input type="number" name="password" ng-model="password">
+        <button ng-disabled="!(formlogin.username.$dirty&&formlogin.password.$dirty)" ng-click="login()">登陆</button>
+        <p>{{formlogin.username.$dirty}}</p>
+        <p>{{formlogin.password.$dirty}}</p>
+      </form>
+    </div>
+    <script src="../js/angular.js"></script>
+    <script>
+      var app = angular.module("ngApp", []);
+      app.controller("index", function($scope){
+        $scope.username = "";
+        $scope.password = "";
+        $scope.login = function(){
+          console.log($scope.username, $scope.password);
+        }
+      })
+      console.log(app);
+    </script>
+  </body>
+</html>

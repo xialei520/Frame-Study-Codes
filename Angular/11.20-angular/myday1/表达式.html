@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body ng-app="ngApp">
+    <div ng-controller="index">
+      <p>{{name}}</p>
+      <p>{{num+4 + "hhh"}}</p>
+      <p>{{obj.name + "的年龄是：" + obj.age}}</p>
+      <p>{{arr.length + ","+ arr}}</p>
+      <p>{{bool?"真呢":"假的"}}</p>
+      <p ng-bind-html="html"></p>
+      <p id="{{color}}"></p>
+      <p class="{{name}}"></p>
+      <style>p{color:{{color}}}</style>
+    </div>
+    <script src="../js/angular.js"></script>
+    <script>
+      var app = angular.module("ngApp", []);
+      app.controller("index", function($scope,$sce){
+        $scope.name = "qd";
+        $scope.num = 1;
+        $scope.obj = {
+          name:'xialei',
+          age:18
+        };
+        $scope.arr = ["a", "b", "sc"];
+        $scope.bool = true;
+        $scope.html  = "<P>ssss<span>jjjj</span>ssss</p>";
+        $scope.html = $sce.trustAsHtml($scope.html);
+        $scope.color  ="yellow"
+      })
+    </script>
+  </body>
+</html>

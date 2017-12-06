@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body ng-app="webApp">
+    <div ng-controller="header">
+      <p>{{name}}</p>
+    </div>
+    <div ng-controller="content">
+      <p>{{name}}</p>
+    </div>
+    <div ng-controller="footer">{{name}}</div>
+    <script src = "../js/angular.js"></script>
+    <script>
+      angular.module("webApp",[]).controller("header", function($scope){
+        $scope.name="头部"
+      }).controller("content", function($scope){
+        $scope.name="内容";
+
+      }).controller("footer", function($scope){
+        $scope.name = "尾部"
+      })
+    </script>
+  </body>
+</html>

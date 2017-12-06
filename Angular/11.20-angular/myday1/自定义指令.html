@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body ng-app="ngApp">
+    <div ng-controller = "html">
+      <p ng-bind='name'></p>
+      <div ng-color="blue">指令</div>
+      <p ng-showw="true">显示与隐藏</p>
+    </div>
+    <script src="../js/angular.js"></script>
+    <script>
+      var app =  angular.module("ngApp", []);
+      app.directive("ngColor", function(){
+        return {
+          link:function(scope, ele, attr){
+            ele.css("color", attr.ngColor);
+            // console.log(scope);
+            // console.log(ele);
+            // console.log(attr);
+          }
+        }
+      })
+      app.directive("ngShoww", function(){
+        return {
+          link:function(scope, ele, attr){
+            if(attr.ngShoww == "true"){
+              ele.css("display", "block")
+            }else{
+              ele.css("display", "none")
+            }
+            console.log(scope);
+            console.log(ele);
+            console.log(attr);
+          }
+        }
+      })
+      app.controller("html", function($scope){
+        $scope.name = "qd";
+        $scope.skill = "ps"
+      })
+      console.log(app);
+    </script>
+  </body>
+</html>

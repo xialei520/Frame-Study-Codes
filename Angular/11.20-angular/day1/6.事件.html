@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="ngApp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div ng-controller="index">
+      <!-- V -->
+      <p ng-bind="name"></p>
+      <!-- ng-click    @click -->
+      <button type="button" name="button" ng-click="test()">test</button>
+      <input ng-change="test()" ng-model="name" />
+    </div>
+    <script src="../js/angular.js"></script>
+    <script type="text/javascript">
+      var app = angular.module("ngApp",[])
+      // C
+      app.controller("index",function($scope){
+        // data Model
+        $scope.name = "qd"
+        $scope.skill = "ps"
+        $scope.test = function(){
+          console.log("test");
+          //$scope.name = "gz"
+        }
+      })
+      console.log(app);
+    </script>
+  </body>
+</html>

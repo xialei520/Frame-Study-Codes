@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="ngApp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body ng-app="ngApp">
+    <div ng-controller="index" style="border:1px solid red">
+      {{ed(name)}}
+      <!-- 1 -->
+      <p ng-show="bool">显示或者隐藏</p>
+      <!-- 2 -->
+      <p ng-style="{display:(bool?'block':'none')}">显示或者隐藏</p>
+      <!-- 3 -->
+      <p style="{{isShow()}}">显示或者隐藏</p>
+      <button ng-click="bool=!bool">ok</button>
+    </div>
+    <script src="../js/angular.js"></script>
+    <script type="text/javascript">
+      var app = angular.module("ngApp",[])
+      app.controller("index",function($scope){
+        $scope.name = "qd"
+        $scope.bool = true
+        $scope.ed = function(str){
+          console.log("1")
+          return str+"ed"
+        }
+        // react
+        $scope.isShow = function(){
+          if($scope.bool){
+            return "display:block"
+          }else{
+            return "display:none"
+          }
+
+        }
+      })
+      console.log(app);
+    </script>
+  </body>
+</html>
