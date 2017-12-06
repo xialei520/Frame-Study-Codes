@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+  function a() {
+    return new Promise(function(resolve, reject) {
+      setTimeout(function() {
+        console.log('执行任务a');
+        var data = '执行任务a成功'
+        resolve(data);
+      }, 1000);
+    });
+  }
+
+  function b(value) {
+    //console.log(value)
+    return new Promise(function(resolve, reject) {
+      console.log(value)
+      setTimeout(function() {
+        console.log('执行任务b');
+        resolve('执行任务b成功');
+      }, 2000);
+    });
+  }
+
+  function c() {
+    console.log('最后执行c')
+  }
+  a().then(b).then(c);
+</script>
+
+</html>

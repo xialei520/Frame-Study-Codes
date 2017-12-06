@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body ng-app = "ngApp">
+    <div ng-controller="indexCtrl">
+      <p>{{name}}</p>
+      <div ng-bind-html="html|html"></div>
+    </div>
+    <script src="../js/angular.js"></script>
+    <script>
+      //主模块
+      var app = angular.module('ngApp', ["controllers","services","filters","directives"]);
+
+      //分模块
+      var controllers = angular.module("controllers", []);
+      //服务
+      controllers.controller("indexCtrl", function($scope){
+        $scope.name="xiale";
+        $scope.html="<div>123<span>123</span></div>"
+      })
+      controllers.controller("homeCtrl", function($scope){
+        $scope.name = "xiaoming"
+      })
+
+      //分模块
+      var services = angular.module("services", []);
+      services.service("tool", function(){
+        return{
+          add:function(a, b){
+            return a+ b;
+          }
+        }
+      })
+
+      //分模块
+      var filters = angular.module("filters", []);
+      filters.filter("html", function($sce){
+        return function(value){
+          return $sce.trustAsHtml(value)
+        }
+      })
+
+      //分模块
+      var directives = angular.module("directives", []);
+      directives.directive("ngColor", function(){
+        return {
+          link:function(scope, ele, attr){
+
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

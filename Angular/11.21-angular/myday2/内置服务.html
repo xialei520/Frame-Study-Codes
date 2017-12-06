@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body ng-app='ngApp'>
+    <div ng-controller="index">
+      <div>{{name}}</div>
+      <div>{{skill}}</div>
+      <p id="demo" ng-bind-html="html|scehtml"></p>
+    </div>
+    <script src="../js/angular.js"></script>
+    <script>
+      var app = angular.module("ngApp", []);
+      app.directive("ngColor", function($document){
+        return {
+          link:function(scope, ele, attr){
+
+          }
+        }
+      })
+      app.filter("scehtml", function($sce){
+        return function(value){
+          return $sce.trustAsHtml(value)
+        }
+      })
+      app.controller("index", function($scope, $location,$http,$timeout, $interval,$document,$window, $sce){
+        $scope.name = "jjjj";
+        $scope.html = "<div>123999</div>"
+        $http.get("json.json").then(function(data){
+          console.log(data);
+        })
+        setTimeout(function(){
+          $scope.skill = "hahhahah"
+        }, 1000)
+        $document[0].getElementById("demo").style.color = "green"
+        console.log($location);
+        console.log($location.$$path);
+        console.log($location.$$protocol);
+        console.log($location.$$search);
+        console.log($location.$$url);
+        console.log($http);
+        console.log($timeout);
+        console.log($interval);
+      })
+    </script>
+  </body>
+</html>

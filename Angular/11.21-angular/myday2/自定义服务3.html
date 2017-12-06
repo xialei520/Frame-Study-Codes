@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body ng-app='ngApp'>
+    <div ng-controller="index">
+      <p>{{name}}</p>
+    </div>
+    <script src="../js/angular.js"></script>
+    <script>
+      var app = angular.module("ngApp", []);
+      console.log(app);
+      app.constant("tool", function(){
+        return {
+          add:function(a, b){
+            return a+b;
+          }
+        }
+      })
+      app.value('appVersion', 3.0);
+      app.constant("pi", Math.PI)
+      app.controller("index", function($scope,tool,appVersion,pi){
+        $scope.name="niaho"
+        console.log(tool);
+        console.log(appVersion);
+        console.log(pi);
+      })
+    </script>
+  </body>
+</html>

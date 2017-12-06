@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app="ngApp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div ng-controller="indexCtrl">
+      <p style="color:red">1.$scope</p>
+      <p>{{name}}</p>
+      <p style="color:red">2.$timeout</p>
+      <input class="name" ng-model="name" />
+      <p>{{text}}</p>
+      <p style="color:red">3.$interval</p>
+      <p>{{num}}</p>
+      <p style="color:red">4.$document</p>
+      <p id="demo">demo</p>
+      <p style="color:red">5.$sce</p>
+      <p ng-bind-html="html"></p>
+      <p ng-bind-html="html2|scehtml"></p>
+
+    </div>
+    <script type="text/javascript" src="../js/angular.js"></script>
+    <script type="text/javascript">
+      var app = angular.module("ngApp",[]);
+      <!-- 1.$scope -->
+      app.directive("ngColor",function($document){
+        return {
+          link:function(scope,ele,attr){
+          }
+        }
+      })
+      app.filter("scehtml",function($sce){
+        return function(value){
+          return $sce.trustAsHtml(value)
+        }
+      })
+      app.controller("indexCtrl",function($location,$scope,$http,$timeout,$interval,$document,$window,$sce){
+        $scope.name = "qd"
+        $scope.num = 1
+        $scope.html2 = "<p>123<span style='color:yellow'>456</span>789</p>"
+
+        console.log($location)
+        console.log($http)
+        $http.get("json.json").then(function(data){
+          console.log(data)
+          $scope.text = data.data.name
+        })
+        // $timeout(function(){
+        //   $scope.name = "gz";
+        // }, 1000)
+        window.setTimeout(function(){
+          $scope.name = "hk";
+        }, 1000)
+        $interval(function(){
+          $scope.num++
+        },1000)
+        // window.setInterval(function(){
+        //   console.log("定时器")
+        //   $scope.num++
+        // }, 1000)
+        $document[0].getElementById("demo").value = "green"
+        // DOM
+        $window.document
+        console.log($document);
+        $scope.html = $sce.trustAsHtml("<p>123<span>456</span></p>")
+      })
+
+      // setTimeout(function(){
+      //   document.getElementsByClassName('name').value = 1;
+      // },1000)
+    </script>
+  </body>
+</html>

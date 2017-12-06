@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body ng-app="ngApp">
+    <div ng-controller="indexCtrl">
+      <p>{{name}}</p>
+    </div>
+    <div ng-controller="homeCtrl">
+      <p>{{name}}</p>
+    </div>
+    <script src="../js/angular.js"></script>
+    <script type="text/javascript">
+    // vue + webpack(gulp+requirejs)
+    // import export require module.export
+    // app.filter
+    // app.directive
+    // app.controller
+      var app = angular.module("ngApp",[]);
+      console.log(app);
+      app.service("tool",function(){
+        return {
+          add:function(a,b){
+            return a+b
+          },
+          // vuex redux
+          num: 2
+        }
+      })
+      app.service("store",function(){
+        return {
+          name:"今日头条",
+          num: 2
+        }
+      })
+      app.controller("indexCtrl",function($scope, store, $interval){
+        $scope.name = "qd"
+        store.num = 1
+        $interval(function(){
+          console.log(store)
+        },1000)
+      })
+      app.controller("homeCtrl",function($scope, store){
+        $scope.name = "gz"
+        store.num = 3
+        console.log(store)
+      })
+    </script>
+  </body>
+</html>

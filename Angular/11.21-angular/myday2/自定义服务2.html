@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body ng-app = "ngApp">
+    <div ng-controller="index">
+      <p>{{name}}</p>
+    </div>
+    <script src="../js/angular.js"></script>
+    <script>
+      var app = angular.module('ngApp', []);
+      console.log(app);
+      // app.factory("tool", function(){
+      //   return {
+      //     add:function(a, b){
+      //       return a+b;
+      //     }
+      //   }
+      // })
+      app.service("tool", function(){
+        this.add=function(a, b){
+          return a+ b;
+        }
+        return {
+          add:function(){
+            
+          }
+        }
+      })
+      app.controller("index", function($scope, tool){
+        $scope.name = "qd";
+        console.log(tool)
+      })
+    </script>
+  </body>
+</html>
