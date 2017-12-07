@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="ngApp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div ng-controller="index">
+      <p ng-bind="name"></p>
+      <div ng-color="red" id="1">指令</div>
+      <div ng-color="blue" id="1">指令</div>
+
+      <div ng-showw="true">指令</div>
+    </div>
+    <script src="../js/angular.js"></script>
+    <script type="text/javascript">
+      var app = angular.module("ngApp",[])
+      app.directive("ngColor",function(){
+        return {
+          // template:`
+          //   <div>第一个指令</div>
+          // `,
+          link:function(scope,ele,attr){
+            ele.css("color",attr.ngColor)
+            console.log(scope)
+            console.log(ele)
+            console.log(attr.ngColor)
+          }
+        }
+      })
+
+      app.directive("ngShoww",function(){
+        return {
+          link:function(scope,ele,attr){
+            if(attr.ngShoww==="true"){
+              ele.css("display","block")
+            }else{
+              ele.css("display","none")
+            }
+            console.log(scope)
+            console.log(ele)
+            console.log(attr.ngShoww)
+          }
+        }
+      })
+      app.controller("index",function($scope){
+        $scope.name = "qd"
+        $scope.skill = "ps"
+      })
+      console.log(app);
+    </script>
+  </body>
+</html>

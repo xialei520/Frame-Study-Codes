@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html ng-app="ngApp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <!-- 后端框架 -->
+    <!-- View -->
+    <!-- v-text == {{}} -->
+    <div ng-controller="index">
+      <!-- HTML -->
+      <p style="color:red">1.ng-bind</p>
+      <!-- <p>{{name}}</p> -->
+      <!-- v-text -->
+      <p ng-bind="name"></p>
+      <!-- v-show -->
+      <p style="color:red">2.ng-show</p>
+      <p ng-show="!bool">显示或者隐藏</p>
+
+      <p style="color:red">ng-hide</p>
+      <p ng-hide="!bool">显示或者隐藏</p>
+
+      <p style="color:red">3.ng-if</p>
+      <p ng-if="bool">删除或者增加节点</p>
+
+      <p style="color:red">4.ng-include</p>
+      <!-- 指令用于包含外部的HTML文件 -->
+      <!-- webpack -->
+      <div ng-include="'./html/template.html'"></div>
+
+      <p style="color:red">5.ng-init</p>
+      <p ng-init="skill='ps'">{{skill}}</p>
+      <h1>element</h1>
+
+      <p style="color:red">6.ng-model</p>
+      <input ng-model="name" />
+      <p>{{name}}</p>
+      <select ng-model="name">
+        <option value="a">1</option>
+        <option value="b">2</option>
+        <option value="c">3</option>
+      </select>
+      <textarea ng-model="name"></textarea>
+
+      <p style="color:red">7.ng-option</p>
+      <select ng-model="name" ng-options="item for item in names"></select>
+
+      <p style="color:red">8.ng-repeat</p>
+      <!-- v-for -->
+      <ul>
+        <li ng-repeat="n in names">{{n}}</li>
+      </ul>
+      <!-- <ul>li
+      <table>tr
+      <select>option -->
+      <p ng-repeat="n in names">{{n}}</p>
+
+      <p style="color:red">9.ng-style</p>
+      <!-- v-bind:style -->
+      <input ng-model="size" type="range" />
+      <p ng-style="{color:color,fontSize:size+'px'}">{{name}}</p>
+
+      <p style="color:red">10.ng-class</p>
+      <!-- :class -->
+      <p ng-class="{'red':bool,'focus':bool}">{{name}}</p>
+    </div>
+    <script src="../js/angular.js"></script>
+    <script type="text/javascript">
+      // new Vue({
+      //   // C
+      //   el:"",
+      //   // M
+      //   data:{}
+      // })
+      // JS
+      // el
+      angular.module("ngApp",[]).controller("index",function($scope,$sce){
+        // angular.element(document.querySelector("h1")).css("color","red")
+        // Model
+        // data
+        $scope.name = "qd"
+        $scope.bool = true
+        $scope.color = "blue"
+        $scope.size = 18
+        $scope.names = ["a","b","c"]
+      })
+    </script>
+  </body>
+</html>

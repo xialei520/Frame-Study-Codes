@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <title></title>
+    <link rel="stylesheet" href="../css/ionic.css">
+  </head>
+  <body ng-app="ionicApp">
+    <div ng-controller="index">
+      <ion-side-menus>
+        <!-- 中间内容 -->
+        <ion-side-menu-content  >
+          <ion-header-bar align-title="center" class="bar-positive">
+            <div class="buttons">
+              <button class="button" ng-click="doSomething()">左侧按钮</button>
+            </div>
+            <h1 class="title">Title!</h1>
+            <div class="buttons">
+              <button class="button">右侧按钮</button>
+            </div>
+          </ion-header-bar>
+
+          <ion-content  >
+            <ion-refresher
+              pulling-text="下拉刷新..."
+              on-refresh="doRefresh()"
+              pulling-icon="ion-ios-paw"
+              refreshing-icon="ion-social-snapchat-outline"
+              >
+            </ion-refresher>
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=516657051&auto=1&height=66"></iframe>
+            <div class="list">
+               <a ng-repeat="a in arr" class="item item-thumbnail-left" ng-href="{{a.short_url}}">
+                 <img ng-src="{{a.bigImage[0]}}">
+                 <h2>{{a.source}}</h2>
+                 <p>{{a.title}}</p>
+               </a>
+            </div>
+            <ion-infinite-scroll
+              on-infinite="doRefresh()"
+              distance="1%">
+            </ion-infinite-scroll>
+          </ion-content>
+
+          <ion-footer-bar align-title="left" class="bar-assertive">
+            <div class="buttons">
+              <button class="button">左侧按钮</button>
+            </div>
+            <h1 class="title">Title!</h1>
+            <div class="buttons" ng-click="doSomething()">
+              <button class="button">右侧按钮</button>
+            </div>
+          </ion-footer-bar>
+        </ion-side-menu-content>
+
+        <!-- 左侧菜单 -->
+        <ion-side-menu side="left">
+          1
+        </ion-side-menu>
+
+        <!-- 右侧菜单 -->
+        <ion-side-menu side="right">
+          2
+        </ion-side-menu>
+
+    </div>
+    <script src="../js/ionic.bundle.js"></script>
+    <script>
+      var app = angular.module("ionicApp", ["ionic"]);
+      app.controller("index", function($scope,$http){
+        $scope.name = "xilae";
+        $scope.arr  =[];
+        $scope.doRefresh = function(){
+
+          $http.get("../day4/qqnews.json").then(function(data){
+            console.log(data.data.newslist);
+            $scope.arr  =$scope.arr.concat(data.data.newslist);
+            $scope.$broadcast('scroll.refreshComplete');
+            $scope.$broadcast('scroll.infiniteScrollComplete');
+          })
+        }
+        $scope.doRefresh();
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="ionicApp">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="../css/ionic.css">
+</head>
+
+<body>
+  <div ng-controller="indexCtrl">
+    <ion-header-bar align-title="center" class="bar-positive">
+      <div class="buttons">
+        <button class="button" ng-click="doSomething()">左侧按钮</button>
+      </div>
+      <h1 class="title">Title!</h1>
+      <div class="buttons">
+        <button class="button">右侧按钮</button>
+      </div>
+    </ion-header-bar>
+
+    <ion-content>
+      <ion-refresher pulling-text="loading..." pulling-icon="ion-ios-paw" refreshing-icon="ion-social-snapchat-outline" on-refresh="doRefresh()">
+      </ion-refresher>
+      <!-- ul -->
+      <div class="list">
+
+    <a class="item item-thumbnail-left" href="#">
+      <img src="cover.jpg">
+      <h2>Pretty Hate Machine</h2>
+      <p>Nine Inch Nails</p>
+    </a>
+
+    ...
+
+</div>
+    </ion-content>
+
+    <ion-footer-bar align-title="left" class="bar-assertive">
+      <div class="buttons">
+        <button class="button">左侧按钮</button>
+      </div>
+      <h1 class="title">Title!</h1>
+      <div class="buttons" ng-click="doSomething()">
+        <button class="button">右侧按钮</button>
+      </div>
+    </ion-footer-bar>
+  </div>
+  <script type="text/javascript" src="../js/ionic.bundle.js"></script>
+  <script type="text/javascript">
+    var app = angular.module("ionicApp", ["ionic"]);
+    app.controller("indexCtrl", function($scope) {
+      $scope.name = "qd"
+    })
+  </script>
+</body>
+
+</html>

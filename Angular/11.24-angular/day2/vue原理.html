@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <!-- V -->
+  <div id="demo">
+
+  </div>
+</body>
+<script type="text/javascript">
+  var data = {}
+  var el = "#demo"
+  var template = `<div>{{name}}</div>`;
+  Object.defineProperty(data, "name", {
+    set: function(newValue) {
+      console.log('newValue:' + newValue)
+      document.querySelector(el).innerHTML = newValue
+    },
+    get: function() {
+      console.log("getValue:")
+      return '你已经成功取值'
+    }
+  })
+  // M
+  data.name = 'wsscat' //log: newValue:wsscat
+  setTimeout(function(){
+    data.name = 'abc'
+  },1000)
+</script>
+
+</html>

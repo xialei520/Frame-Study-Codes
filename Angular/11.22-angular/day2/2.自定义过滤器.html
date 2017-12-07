@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body ng-app="ngApp">
+    <div ng-controller="indexCtrl">
+      <p>{{name}}</p>
+    <script src="../js/angular.js"></script>
+    <script type="text/javascript">
+      var app = angular.module("ngApp",[]);
+      app.directive("ngColor",function(){
+        return {
+          link:function(scope,elel,attr){
+
+          }
+        }
+      })
+      app.filter("ed",function(){
+        return function(value){
+          return value+"eeeed"
+        }
+      })
+      app.controller("indexCtrl",function($scope){
+        $scope.name = "qd"
+      })
+    </script>
+  </body>
+</html>

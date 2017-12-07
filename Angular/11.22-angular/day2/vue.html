@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="demo"></div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+      <!-- jsx -->
+      new Vue({
+        el:"#demo",
+        data:{
+          name:"qd",
+          id:1
+        },
+        template:`
+          <div>
+            <div v-html="render()"></div>
+          </div>
+        `,
+        methods:{
+          render:function(){
+            return `<h${this.id}>qd</h${this.id}>`
+          }
+        },
+        mounted(){
+          setInterval(function(){
+            if(this.id>=6){
+              return;
+            }else{
+              this.id++
+            }
+          }.bind(this),1000)
+        }
+      })
+    </script>
+  </body>
+</html>

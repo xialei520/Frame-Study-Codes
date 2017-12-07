@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body ng-app="ngApp">
+  <div ng-controller="indexCtrl" style="border:1px solid red">
+    <input ng-model="name" />
+    <p>{{name}}</p>
+  </div>
+  <div ng-controller="homeCtrl" style="border:1px solid green">
+    <p>{{name.state.title}}</p>
+  </div>
+  <script src="../js/angular.js"></script>
+  <script type="text/javascript">
+    var app = angular.module("ngApp", []);
+    // 建立store，类似redux和vuex
+    app.service("store", function() {
+      return {
+        state:{
+          title:"今日头条"
+        },
+        getters:{
+          getTitle:(){
+            return this.state.title
+          }
+        },
+        action:{}
+      }
+    })
+    app.controller("indexCtrl", function($scope,store) {
+      $scope.name = "qd"
+      // computed watch
+      $scope.$watch("name",function(){
+        store.state.title = $scope.name;
+      })
+      console.log(store);
+    })
+    app.controller("homeCtrl", function($scope,store) {
+      $scope.name = store
+    })
+  </script>
+</body>
+</html>

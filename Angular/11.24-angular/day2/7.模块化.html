@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body ng-app="ngApp">
+    <div ng-controller="indexCtrl">
+      <p>{{name}}</p>
+      <div ng-bind-html="html|html"></div>
+    </div>
+    <script src="../js/angular.js"></script>
+    <script type="text/javascript">
+      // 主模块
+      var app = angular.module("ngApp",["controllers","services","filters","directives"]);
+
+      // 分模块
+      var controllers = angular.module("controllers",[]);
+      // 控制器
+      controllers.controller("indexCtrl",function($scope,tool){
+        $scope.name = "qd"
+        $scope.html = "<p>123<span>456</span></p>"
+        console.log(tool);
+      })
+      controllers.controller("homeCtrl",function($scope){
+        $scope.name = "gz"
+      })
+
+
+
+      // 分模块
+      var services = angular.module("services",[]);
+      // 服务
+      services.service("tool",function(){
+        return {
+          add:function(a,b){
+            return a+b
+          }
+        }
+      })
+
+
+      // 分模块
+      var filters = angular.module("filters",[]);
+      // 过滤器
+      filters.filter("html",function($sce){
+        return function(value){
+           return $sce.trustAsHtml(value)
+        }
+      })
+
+
+      // 分模块
+      var directives = angular.module("directives",[]);
+      // 指令
+      directives.directive("ngColor",function () {
+        return {
+          link :function(scope,ele,attr){
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

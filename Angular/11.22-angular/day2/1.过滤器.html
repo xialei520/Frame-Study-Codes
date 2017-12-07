@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="ngApp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div ng-controller="indexCtrl">
+      <p style="color:red">1.filter过滤器</p>
+      <input ng-model="name" />
+      <ul>
+        <li ng-repeat="a in arr|filter:{name:name}">{{a.id}}:{{a.name}}</li>
+      </ul>
+
+      <p style="color:red">2.orderBy过滤器</p>
+      <ul>
+        <li ng-repeat="a in arr|orderBy:'id':false">{{a.id}}:{{a.name}}</li>
+      </ul>
+    </div>
+    <script type="text/javascript" src="../js/angular.js"></script>
+    <script type="text/javascript">
+      var app = angular.module("ngApp",[]);
+      app.controller("indexCtrl",function($scope){
+        $scope.name = 'qd'
+        $scope.arr = [{
+          id:1,
+          name:"qd"
+        },{
+          id:4,
+          name:"gz"
+        },{
+          id:2,
+          name:"bj"
+        },{
+          id:3,
+          name:"qdq"
+        }]
+      })
+    </script>
+  </body>
+</html>

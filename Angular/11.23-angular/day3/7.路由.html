@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body ng-app="ngApp">
+    <a href="#!/index">index</a>
+    <a href="#!/home">home</a>
+    <ui-view></ui-view>
+    <!-- <div ui-view></div> -->
+    <!--  -->
+    <script src="../js/angular.js"></script>
+    <script src="../js/angular-ui-router.js"></script>
+    <script type="text/javascript">
+      var app = angular.module("ngApp",["ui.router"]);
+      console.log(app);
+      app.config(function($stateProvider,$urlRouterProvider){
+        console.log($stateProvider);
+        $stateProvider.state("index",{
+          url:"/index",
+          templateUrl:"./template/index.html",
+          controller:"indexCtrl"
+        })
+
+
+        .state("home",{
+          url:"/home",
+          template:`
+          <div>
+            <p>home</p>
+            <a href="#!/home/a">a</a>
+            <a href="#!/home/b">b</a>
+            <ui-view></ui-view>
+          </div>
+          `
+        }).state("home.a",{
+          url:"/a",
+          template:"<p>a</p>"
+        }).state("home.b",{
+          url:"/b",
+          template:"<p>b</p>"
+        })
+
+
+
+      })
+      app.controller("indexCtrl",function($scope){
+        $scope.name = "qd"
+        $scope.arr = ["a","b","c"]
+      })
+    </script>
+  </body>
+</html>

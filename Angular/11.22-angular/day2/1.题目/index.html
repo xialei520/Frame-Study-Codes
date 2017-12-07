@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function foo(){
+        <!-- private -->
+        var a;
+        foo.a = function(){
+          console.log(1)
+        }
+        <!-- public -->
+        this.a = function(){
+          console.log(2)
+        }
+        a = function(){
+          console.log(3)
+        }
+        var a = function(){
+          console.log(4)
+        }
+      }
+      foo.prototype.a = function(){
+        console.log(5)
+      }
+      <!-- static -->
+      foo.a = function(){
+        console.log(6)
+      }
+      foo.a()//6
+      var obj = new foo();
+      obj.a()
+      foo.a()
+
+
+
+      (function(){
+        var a = (function(){
+          return 1
+        })()
+      })()
+    </script>
+  </body>
+</html>

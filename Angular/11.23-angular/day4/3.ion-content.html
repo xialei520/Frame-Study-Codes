@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="ionicApp">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="../css/ionic.css">
+</head>
+
+<body>
+  <div ng-controller="indexCtrl">
+    <ion-header-bar align-title="center" class="bar-positive">
+      <div class="buttons">
+        <button class="button" ng-click="doSomething()">左侧按钮</button>
+      </div>
+      <h1 class="title">Title!</h1>
+      <div class="buttons">
+        <button class="button">右侧按钮</button>
+      </div>
+    </ion-header-bar>
+    <ion-footer-bar align-title="left" class="bar-assertive">
+      <div class="buttons">
+        <button class="button">左侧按钮</button>
+      </div>
+      <h1 class="title">Title!</h1>
+      <div class="buttons" ng-click="doSomething()">
+        <button class="button">右侧按钮</button>
+      </div>
+    </ion-footer-bar>
+  </div>
+  <script type="text/javascript" src="../js/ionic.bundle.js"></script>
+  <script type="text/javascript">
+    var app = angular.module("ionicApp", ["ionic"]);
+    app.controller("indexCtrl", function($scope) {
+      $scope.name = "qd"
+    })
+  </script>
+</body>
+
+</html>
