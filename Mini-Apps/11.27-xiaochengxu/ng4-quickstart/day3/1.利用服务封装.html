@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body ng-app="ngApp">
+  <div ng-controller="indexCtrl">
+    <p>{{name}}</p>
+  </div>
+  <!-- vue vuex vue-router vue-rescource axios -->
+  <!-- redux react -->
+  <script src="../js/angular.js"></script>
+  <script type="text/javascript">
+    var app = angular.module("ngApp", []);
+    app.service("cookie", function() {
+      return {
+        getCookie: function(name) {
+          var a;
+          var reg = new RegExp("(^|)" + name + "=([^;]*)(;|$)");
+          if (a = document.cookie.match(reg)) {
+            return a[2];
+          }
+        },
+        setCookie: function(name, value) {
+          var days = 10;
+          var ex = new Date();
+          ex.setTime(ex.getTime() + days * 24 * 60 * 60 * 1000);
+          document.cookie = name + "=" + value + ";expires=" + ex;
+        }
+      }
+    })
+    app.controller("indexCtrl", function($scope, cookie) {
+      $scope.name = "qd"
+      cookie.setCookie("name","qingdao")
+      console.log(cookie.getCookie("name"));
+    })
+  </script>
+</body>
+
+</html>

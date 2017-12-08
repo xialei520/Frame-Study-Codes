@@ -1,0 +1,26 @@
+<import src="../../template/xheader.wxml"/>
+
+<view bindtouchmove="move">设置页面</view>
+<view>{{!bool?"真的":"假的"}}</view>
+<view id="{{name}}">{{arr[1]}}</view>
+<button bindtap="test">OK</button>
+<view wx:for="{{arr}}">
+  {{index}}: {{item.message}}
+</view>
+<view>{{bool}}</view>
+<view wx:if="{{!bool}}"> True </view>
+<view style="display:{{!bool?'block':'none'}}"> True </view>
+
+<template is="msgItem" data="{{...obj}}" />
+<template is="msgItem" />
+<template is="msgItem" data="{{...obj}}" />
+<template is="msgItem" data="{{...obj}}" />
+<template is="msgItem" />
+<template is="msgItem" />
+
+<template name="msgItem">
+  <view>
+    <text> {{name}} </text>
+    <text> {{skill}} </text>
+  </view>
+</template>

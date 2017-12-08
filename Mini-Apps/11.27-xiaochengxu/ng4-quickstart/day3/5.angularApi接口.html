@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body ng-app="ngApp">
+    <div ng-controller="indexCtrl">
+      <p>{{name}}</p>
+    </div>
+    <script src="../js/angular.js"></script>
+    <script type="text/javascript">
+      //1.angular.extend
+      console.log(angular.extend({
+        name:"qd"
+      },{
+        skill:"ps",
+        arr:["a","b","c"]
+      }));
+
+      //2.angular.equals
+      console.log(angular.equals({skill:"ps",obj:"name"},{obj:"name",skill:"ps"}));
+
+      //3.angular.forEach
+      var arr = ["a","b","c"]
+      angular.forEach(arr,function(item){
+        console.log(item);
+      })
+
+      //4.angular.merge
+      var arr2 = ["d","e","f"]
+      console.log(angular.merge({
+        name:"qd"
+      },{
+        skill:"ps",
+        arr:["a","b","c"]
+      }));
+
+      // 5.angular.element
+      angular.element(document.querySelector("p")).css("color","red")
+      //$ jQuery
+      var app = angular.module("ngApp",[]);
+      console.log(angular);
+      app.controller("indexCtrl",function($scope){
+        $scope.name = "qd"
+      })
+    </script>
+  </body>
+</html>

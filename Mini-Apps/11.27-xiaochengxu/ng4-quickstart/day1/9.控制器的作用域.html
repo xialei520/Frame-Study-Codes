@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="ngApp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <!-- MVC -->
+    <!-- MV -->
+    <div ng-controller="index" style="border:1px solid red">
+      {{name}}
+      <div ng-controller="child" style="border:1px solid yellow">
+        {{name}}
+      </div>
+    </div>
+    <div ng-controller="home" style="border:1px solid blue">
+      {{name}}
+    </div>
+    <script src="../js/angular.js"></script>
+    <script type="text/javascript">
+      var app = angular.module("ngApp",[])
+      app.controller("index",function($scope){
+        $scope.name = "qd"
+        $scope.test = function(){
+
+        }
+      })
+      app.controller("home",function($scope){
+        $scope.name = "gz"
+      })
+      app.controller("child",function($scope){
+        $scope.name = "bj"
+      })
+      console.log(app);
+    </script>
+  </body>
+</html>

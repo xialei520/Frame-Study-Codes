@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body ng-app="ngApp">
+    <div ng-controller="indexCtrl">
+      <p>{{name}}</p>
+    </div>
+    <script src="../js/angular.js"></script>
+    <script type="text/javascript">
+      var app = angular.module("ngApp",[]);
+      console.log(app);
+      app.constant
+      app.value("appVersion",3.0)
+      app.constant("pi",Math.PI)
+      app.controller("indexCtrl",function($scope, appVersion,pi){
+        $scope.name = "qd"
+        console.log(appVersion);
+        console.log(pi);
+      })
+    </script>
+  </body>
+</html>

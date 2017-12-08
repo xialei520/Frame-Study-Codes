@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="ngApp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <!-- MVC -->
+    <!-- MV -->
+    <div ng-controller="index" style="border:1px solid red">
+      <p style="color:red">1.currency</p>
+      <p>{{num|currency}}</p>
+
+      <p style="color:red">2.lowercase</p>
+      <p>{{name|lowercase}}</p>
+
+      <p style="color:red">3.uppercase</p>
+      <p>{{name|uppercase}}</p>
+
+      <p style="color:red">4.date</p>
+      <p>{{time|date:"yyyy-MM-dd/hh/mm/ss EEEE"}}</p>
+
+      <p style="color:red">5.number</p>
+      <p>{{num|number:8}}</p>
+
+      <p style="color:red">6.limitTo</p>
+      <p>{{name|limitTo:2:3}}</p>
+    </div>
+    <script src="../js/angular.js"></script>
+    <script type="text/javascript">
+      var app = angular.module("ngApp",[])
+      app.controller("index",function($scope){
+        $scope.name = "aBcDeFghII"
+        $scope.num = 123456;
+        $scope.time = 1511163139000
+      })
+    </script>
+  </body>
+</html>
