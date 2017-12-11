@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			var str = "http://www.baidu.com?name=你好&age=18&sex=男";
+			var newStr = str.split("?")[1];
+			var newStr_1 = newStr.split("&");
+			// alert(newStr_1.length);
+			var a = {};
+			for(var i = 0; i < newStr_1.length; i++){
+				var b = newStr_1[i].split("=");
+				console.log(b);
+				a.b[0]=b[1];
+			}
+			console.log(b);
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

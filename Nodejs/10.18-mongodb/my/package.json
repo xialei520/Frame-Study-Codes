@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "async": "^2.5.0",
+    "mongodb": "^2.2.33"
+  }
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src = "/js/jquery-1.11.1.js"></script>
+
+   
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <% if(!username){ %>
+	    <div>
+			<button onclick="location.href='/login'">登陆</button>
+			<button onclick="location.href='/registor'">注册</button>
+	    </div>
+    <% }else{ %>
+	    <div>
+			你好：<%= username %>
+			<button onclick="location.href='/logout'">注销</button>
+	    </div>
+    <% } %>
+
+    
+
+    
+    <button id="btn">ajax提交</button>
+
+  </body>
+   <script src = "/js/ajax.js"></script>
+</html>
